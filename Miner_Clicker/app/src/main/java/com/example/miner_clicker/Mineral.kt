@@ -1,6 +1,6 @@
 package com.example.miner_clicker
 
-class Mineral() {
-   val iconSource:String=""
-   val name:String=""
+open class Mineral(Name:String,IconSource:String) {
+      val name=Name
+      val iconSource=IconSource
 }
