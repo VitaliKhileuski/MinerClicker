@@ -1,6 +1,6 @@
 package com.example.miner_clicker
 
-class pickaxe() {
+class Pickaxe() {
     val id:Int=0;
     val name:String=""
     val price:Int=0
