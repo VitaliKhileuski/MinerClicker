@@ -7,29 +7,27 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appBarLayout">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextAppearance="@style/customTabStyle"
             app:tabBackground="@color/design_default_color_primary_dark"
             app:tabGravity="fill"
             app:tabInlineLabel="true"
             app:tabMode="fixed"
-            app:tabTextColor="@color/white">
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextAppearance="@style/customTabStyle"
+            app:tabTextColor="@color/white"></com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPager"
-        android:layout_below="@id/appBarLayout">
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_below="@id/appBarLayout"></androidx.viewpager.widget.ViewPager>
 
 </RelativeLayout>
