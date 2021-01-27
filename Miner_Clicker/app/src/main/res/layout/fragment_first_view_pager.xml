@@ -3,17 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.FirstViewPagerFragment">
 
-    <RelativeLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:columnCount="2"
+        android:rowCount="3">
+
+
+        <RelativeLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="click" />
+            android:layout_row="0"
+            android:layout_column="0"
+            android:padding="10dp">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="money:0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/money"
+                android:textColor="@color/black"
+                android:text="gems:0" />
+
+        </RelativeLayout>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_row="0"
+    android:layout_column="1">
+    <Button
+        android:text="settings"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginTop="20dp">
+
+    </Button>
+</RelativeLayout>
+
+
+    </GridLayout>
 
 </FrameLayout>
