@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
-import com.example.miner_clicker.fragments.DrillFragment
-import com.example.miner_clicker.fragments.ExchangeFragment
-import com.example.miner_clicker.fragments.ShopFragment
-import com.example.miner_clicker.fragments.StorageFragment
+import com.example.miner_clicker.fragments.*
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         SetUpTabs()
+        Set()
+
     }
 
 
@@ -38,4 +37,12 @@ class MainActivity : AppCompatActivity() {
         tabs.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_construction_24)
         tabs.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_account_balance_24)
     }
+
+   private fun Set(){
+       val adapter=ViewPagerAdapter(supportFragmentManager)
+       adapter.addFragment(FirstViewPagerFragment())
+       viewPager=findViewById(R.id.firstViewPager)
+       viewPager.adapter=adapter
+
+   }
 }
