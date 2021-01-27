@@ -20,6 +20,14 @@ class StorageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val v = inflater.inflate(R.layout.fragment_storage, container, false)
 
         val resource1: StorageItem = StorageItem()
         resource1.capacity = 250
@@ -31,17 +39,21 @@ class StorageFragment : Fragment() {
         resource1.numberOfMineral = 150
         addToList(resource2)
 
-        recyclerView = this.view!!.findViewById(R.id.storage_recyclerView)
+        val resource3: StorageItem = StorageItem()
+        resource1.capacity = 250
+        resource1.numberOfMineral = 150
+        addToList(resource3)
+
+        val resource4: StorageItem = StorageItem()
+        resource1.capacity = 250
+        resource1.numberOfMineral = 150
+        addToList(resource4)
+
+        recyclerView = v.findViewById(R.id.storage_recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.adapter = StorageRecyclerAdapter(resources)
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_storage, container, false)
+        return v
     }
 
     private fun addToList(resource: StorageItem){
