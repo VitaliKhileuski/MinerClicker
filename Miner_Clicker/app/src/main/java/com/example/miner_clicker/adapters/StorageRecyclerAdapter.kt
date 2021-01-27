@@ -25,7 +25,7 @@ class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : Recy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.resourceName.text = storageItems[position].mineral.name
         holder.resourceAmount.text = storageItems[position].numberOfMineral.toString()
-        //holder.resourceImage.setImageResource(storageItems[position].mineral.iconSource)
+        holder.resourceImage.setImageResource(storageItems[position].mineral.iconSource)
     }
 
     override fun getItemCount(): Int {
