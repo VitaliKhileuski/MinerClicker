@@ -6,5 +6,5 @@ class Pickaxe() {
     val price:Int=0
     val descriprion:String="none"
     val damage:Int=0
-    val imageSource:String="none"
+    val imageSource:Int=R.mipmap.ic_launcher_round
 }
