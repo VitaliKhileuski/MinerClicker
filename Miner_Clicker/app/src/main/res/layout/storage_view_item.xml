@@ -10,22 +10,21 @@
     <RelativeLayout
         android:id="@+id/cardView_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:padding="7dp">
 
         <ImageView
             android:id="@+id/resource_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
+            android:layout_margin="2dp"
             android:src="@mipmap/ic_launcher_round" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/resource_image"
-            android:layout_alignBottom="@+id/resource_image"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/resource_image"
             android:orientation="vertical">
 
@@ -35,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Resource name"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/resource_amount"
@@ -43,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="amount"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
