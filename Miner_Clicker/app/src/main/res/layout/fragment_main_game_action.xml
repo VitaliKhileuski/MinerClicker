@@ -4,7 +4,7 @@
     <data>
     <variable
         name="viewModel"
-        type="com.example.miner_clicker.fragments.VM" />
+        type="com.example.miner_clicker.viewModels.MainGameActionFragmentVM" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
@@ -57,7 +57,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:onClick="@{() -> viewModel.Click()}"
                     android:text="settings">
 
                 </Button>
@@ -87,7 +86,8 @@
                 android:layout_height="match_parent"
                 android:layout_row="2"
                 android:layout_column="0"
-                android:layout_columnSpan="1">
+                android:layout_columnSpan="1"
+                android:onClick="@{() -> viewModel.Click()}">
 
             </RelativeLayout>
         </GridLayout>

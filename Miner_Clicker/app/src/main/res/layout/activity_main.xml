@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.miner_clicker.viewModels.MainActivityViewModel" />
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
