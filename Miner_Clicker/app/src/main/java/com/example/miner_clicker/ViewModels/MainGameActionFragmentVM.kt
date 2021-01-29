@@ -1,4 +1,4 @@
-package com.example.miner_clicker.ViewModels
+package com.example.miner_clicker.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
