@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.miner_clicker.R
-import com.example.miner_clicker.ViewModels.MainGameActionFragmentVM
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
+import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 
 class MainGameActionFragment : Fragment() {
@@ -26,7 +25,7 @@ class MainGameActionFragment : Fragment() {
 
         _binding = FragmentMainGameActionBinding.inflate(inflater, container, false)
         binding.lifecycleOwner=this
-        binding.viewModel=VM()
+        binding.viewModel= MainGameActionFragmentVM()
         return binding.root
     }
 

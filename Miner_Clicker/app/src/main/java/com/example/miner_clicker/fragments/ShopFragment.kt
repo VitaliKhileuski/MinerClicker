@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.Pickaxe
 import com.example.miner_clicker.R
 import com.example.miner_clicker.adapters.ShopRecyclerAdapter
+import com.example.miner_clicker.databinding.FragmentShopBinding
+import com.example.miner_clicker.viewModels.ShopFragmentVM
 
 class ShopFragment : Fragment() {
-
+    private var _binding:FragmentShopBinding?=null
+    private val binding get() = _binding!!
     private var products = mutableListOf<Pickaxe>()
-    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +26,9 @@ class ShopFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_shop, container, false)
+        _binding = FragmentShopBinding.inflate(inflater, container, false)
 
         var product1: Pickaxe = Pickaxe()
         addToList(product1)
@@ -36,15 +38,20 @@ class ShopFragment : Fragment() {
         addToList(product3)
         var product4: Pickaxe = Pickaxe()
         addToList(product4)
+        binding.lifecycleOwner=this
+        binding.viewModel= ShopFragmentVM()
+        binding.shopRecyclerView.layoutManager=LinearLayoutManager(this.context)
+        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(products)
 
-        recyclerView = v.findViewById(R.id.shop_recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-        recyclerView.adapter = ShopRecyclerAdapter(products)
-
-        return v
+        return binding.root
     }
 
     private fun addToList(product: Pickaxe){
         products.add(product)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
     }
 }

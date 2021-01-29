@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
 import com.example.miner_clicker.StorageItem
 import com.example.miner_clicker.adapters.StorageRecyclerAdapter
+import com.example.miner_clicker.databinding.FragmentStorageBinding
+import com.example.miner_clicker.viewModels.StorageFragmentVM
 
 
 class StorageFragment : Fragment() {
-
+    private var _binding:FragmentStorageBinding?=null
+    private val binding get() = _binding!!
     private var resources = mutableListOf<StorageItem>()
     lateinit var recyclerView: RecyclerView
 
@@ -25,9 +28,9 @@ class StorageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_storage, container, false)
+        _binding = FragmentStorageBinding.inflate(inflater, container, false)
 
         val resource1: StorageItem = StorageItem()
         resource1.capacity = 250
@@ -48,15 +51,20 @@ class StorageFragment : Fragment() {
         resource1.capacity = 250
         resource1.numberOfMineral = 150
         addToList(resource4)
+        binding.lifecycleOwner=this
+        binding.viewModel= StorageFragmentVM()
+        binding.storageRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.storageRecyclerView.adapter = StorageRecyclerAdapter(resources)
 
-        recyclerView = v.findViewById(R.id.storage_recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
-        recyclerView.adapter = StorageRecyclerAdapter(resources)
-
-        return v
+        return binding.root
     }
 
     private fun addToList(resource: StorageItem){
         resources.add(resource)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
     }
 }
