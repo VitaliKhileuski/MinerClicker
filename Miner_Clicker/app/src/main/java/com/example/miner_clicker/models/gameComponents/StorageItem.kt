@@ -1,4 +1,7 @@
-package com.example.miner_clicker
+package com.example.miner_clicker.models.gameComponents
+
+import com.example.miner_clicker.models.Mineral
+import com.example.miner_clicker.R
 
 class StorageItem() {
     var mineral: Mineral = Mineral("gold", R.mipmap.ic_pickaxe)
