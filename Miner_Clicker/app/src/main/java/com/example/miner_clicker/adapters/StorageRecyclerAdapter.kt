@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
-import com.example.miner_clicker.StorageItem
+import com.example.miner_clicker.models.gameComponents.StorageItem
 
 class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : RecyclerView.Adapter<StorageRecyclerAdapter.ViewHolder>() {
 

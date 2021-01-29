@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.miner_clicker.Pickaxe
-import com.example.miner_clicker.R
+import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.adapters.ShopRecyclerAdapter
 import com.example.miner_clicker.databinding.FragmentShopBinding
 import com.example.miner_clicker.viewModels.ShopFragmentVM

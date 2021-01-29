@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.miner_clicker.Pickaxe
+import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
 
 class ShopRecyclerAdapter(private var shopItems: List<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
