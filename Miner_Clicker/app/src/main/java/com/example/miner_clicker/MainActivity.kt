@@ -1,5 +1,4 @@
 package com.example.miner_clicker
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -7,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
+import com.example.miner_clicker.viewModels.MainActivityViewModel
 import com.google.android.material.tabs.TabLayout
 
 
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.lifecycleOwner=this
+        binding.viewModel= MainActivityViewModel()
         SetUpTabs()
         Set()
 

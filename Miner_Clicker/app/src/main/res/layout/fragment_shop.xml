@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.ShopFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shop_recyclerView"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.miner_clicker.viewModels.ShopFragmentVM" />
+    </data>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        tools:listitem="@layout/shop_view_item"/>
+        tools:context=".fragments.ShopFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shop_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            tools:listitem="@layout/shop_view_item"/>
 
 
-</FrameLayout>
+    </FrameLayout>
+</layout>
