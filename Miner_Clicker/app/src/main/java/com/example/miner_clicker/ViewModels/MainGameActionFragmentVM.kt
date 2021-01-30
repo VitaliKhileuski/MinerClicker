@@ -4,10 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.miner_clicker.models.Ore
+import com.example.miner_clicker.models.gameComponents.RandomMinerals
+import com.example.miner_clicker.models.gameComponents.Storage
 
 class MainGameActionFragmentVM:ViewModel() {
     private var ore:Ore = Ore(10,5,1)
     private var money = MutableLiveData<Int>()
+    private var capacity = MutableLiveData<Int>()
     private var textProgressBar = MutableLiveData<String>()
     public var TextProgressBar : LiveData<String> = textProgressBar
     public var Money : LiveData<Int> = money
@@ -15,6 +18,7 @@ class MainGameActionFragmentVM:ViewModel() {
     public var CurrentHpOre: LiveData<Int> = currentHpOre
     private var maxHpOre = MutableLiveData<Int>()
     public var MaxHpOre : LiveData<Int> = maxHpOre
+    public var Capacity : LiveData<Int> = capacity
 
 
     init {
@@ -26,13 +30,19 @@ class MainGameActionFragmentVM:ViewModel() {
         currentHpOre.value = currentHpOre.value!!.minus(1)
         textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
         if(currentHpOre.value!! <= 0){
-            ore.SetNewLevel()
-            RefreshProperties()
+            createNewOre()
         }
     }
     private fun RefreshProperties(){
         maxHpOre.value =ore.maxHealth
         currentHpOre.value =ore.maxHealth
         textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
+    }
+    fun createNewOre(){
+        var random : RandomMinerals = RandomMinerals(capacity.value)
+        var storage : Storage = random.getStorageItems()
+        ore.SetNewLevel()
+        RefreshProperties()
+
     }
 }
