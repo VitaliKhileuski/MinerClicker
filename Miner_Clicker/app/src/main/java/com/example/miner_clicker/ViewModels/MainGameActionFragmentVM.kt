@@ -8,20 +8,23 @@ import com.example.miner_clicker.models.Ore
 class MainGameActionFragmentVM:ViewModel() {
     private var ore:Ore = Ore(10,5,1)
     private var money = MutableLiveData<Int>()
+    private var textProgressBar = MutableLiveData<String>()
+    public var TextProgressBar : LiveData<String> = textProgressBar
     public var Money : LiveData<Int> = money
     private var currentHpOre = MutableLiveData<Int>()
     public var CurrentHpOre: LiveData<Int> = currentHpOre
     private var maxHpOre = MutableLiveData<Int>()
     public var MaxHpOre : LiveData<Int> = maxHpOre
 
+
     init {
         money.value = 0
-        maxHpOre.value =ore.maxHealth
-        currentHpOre.value =ore.maxHealth
+        RefreshProperties()
     }
     fun Click(){
         money.value=money.value!!.plus(1)
         currentHpOre.value = currentHpOre.value!!.minus(1)
+        textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
         if(currentHpOre.value!! <= 0){
             ore.SetNewLevel()
             RefreshProperties()
@@ -30,5 +33,6 @@ class MainGameActionFragmentVM:ViewModel() {
     private fun RefreshProperties(){
         maxHpOre.value =ore.maxHealth
         currentHpOre.value =ore.maxHealth
+        textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
     }
 }
