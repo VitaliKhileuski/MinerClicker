@@ -40,7 +40,7 @@ class MainGameActionFragmentVM:ViewModel() {
     }
     fun createNewOre(){
         var random : RandomMinerals = RandomMinerals(capacity.value)
-        var storage : Storage = random.getStorageItems()
+            //    var storage : Storage = random.getStorageItems()  // FIXME: 31.01.2021
         ore.SetNewLevel()
         RefreshProperties()
 
