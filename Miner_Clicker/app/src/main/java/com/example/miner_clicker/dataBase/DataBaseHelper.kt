@@ -8,15 +8,20 @@ class DataBaseHelper(context : Context): SQLiteOpenHelper(context,DataBaseInfo.D
         null,DataBaseInfo.DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL(DataBaseInfo.CREATE_TABLE)
+        db?.execSQL(DataBaseInfo.CREATE_TABLE_PLAYER)
+        db?.execSQL(DataBaseInfo.CREATE_TABLE_STORAGE)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL(DataBaseInfo.SQL_DELETE_PLAYER)
+        db.execSQL(DataBaseInfo.SQL_DELETE_STORAGE)
+        onCreate(db)
     }
 
     override fun onOpen(db: SQLiteDatabase?) {
         super.onOpen(db)
 
     }
+
+
 }

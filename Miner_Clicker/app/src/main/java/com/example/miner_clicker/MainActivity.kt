@@ -5,8 +5,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
 import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.dataBase.tables.PlayerTable
+import com.example.miner_clicker.dataBase.tables.StorageTable
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
+import com.example.miner_clicker.models.*
+import com.example.miner_clicker.models.gameComponents.StorageItem
 import com.example.miner_clicker.viewModels.MainActivityViewModel
 import com.google.android.material.tabs.TabLayout
 
@@ -14,7 +18,7 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
-    var dataBase: DataBase = DataBase(this)
+    var database: DataBase = DataBase(this)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.lifecycleOwner=this
         binding.viewModel= MainActivityViewModel()
-        ConnectingWithDataBasePlayer()
+        ConnectingWithDataBase()
 
         SetUpTabs()
         Set()
@@ -32,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        ConnectingWithDataBasePlayer()
+        ConnectingWithDataBase()
     }
 
 
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ShopFragment(),"Shop")
-        adapter.addFragment(StorageFragment(),"storage")
+        adapter.addFragment(StorageFragment(database),"storage")
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
         viewPager = findViewById(R.id.viewPager)
@@ -56,19 +60,17 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-       adapter.addFragment(MainGameActionFragment(dataBase))
+       adapter.addFragment(MainGameActionFragment(database))
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 
    }
-    private fun ConnectingWithDataBasePlayer(){
-        dataBase.OpenDataBase()
-        //dataBase.DeleteAllRows()
-        //dataBase.InsertPlayerData(0,0)
+    private fun ConnectingWithDataBase(){
+        database.OpenDataBase()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        dataBase.CloseDataBase()
+        database.CloseDataBase()
     }
 }
