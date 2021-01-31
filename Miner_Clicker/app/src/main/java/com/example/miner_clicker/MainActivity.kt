@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
+import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
 import com.example.miner_clicker.viewModels.MainActivityViewModel
@@ -13,6 +14,8 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
+    var dataBase: DataBase = DataBase(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +23,16 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.lifecycleOwner=this
         binding.viewModel= MainActivityViewModel()
+        ConnectingWithDataBasePlayer()
+
         SetUpTabs()
         Set()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ConnectingWithDataBasePlayer()
     }
 
 
@@ -46,9 +56,19 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-       adapter.addFragment(MainGameActionFragment())
+       adapter.addFragment(MainGameActionFragment(dataBase))
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 
    }
+    private fun ConnectingWithDataBasePlayer(){
+        dataBase.OpenDataBase()
+        //dataBase.DeleteAllRows()
+        //dataBase.InsertPlayerData(0,0)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dataBase.CloseDataBase()
+    }
 }

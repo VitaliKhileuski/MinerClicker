@@ -14,4 +14,9 @@ class DataBaseHelper(context : Context): SQLiteOpenHelper(context,DataBaseInfo.D
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         TODO("Not yet implemented")
     }
+
+    override fun onOpen(db: SQLiteDatabase?) {
+        super.onOpen(db)
+
+    }
 }

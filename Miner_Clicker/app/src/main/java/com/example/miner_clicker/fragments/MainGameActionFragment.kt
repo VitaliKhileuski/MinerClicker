@@ -5,13 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 
-class MainGameActionFragment : Fragment() {
+class MainGameActionFragment(database : DataBase) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
     private val binding get() = _binding!!
+    private val dataBase=database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainGameActionFragment : Fragment() {
 
         _binding = FragmentMainGameActionBinding.inflate(inflater, container, false)
         binding.lifecycleOwner=this
-        binding.viewModel= MainGameActionFragmentVM()
+        binding.viewModel= MainGameActionFragmentVM(dataBase)
         return binding.root
     }
 

@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/money"
-                    android:text=":0"
+                    android:text="@{Integer.toString(viewModel.gems)}"
                     android:layout_marginTop="14dp"
                     android:layout_marginLeft="50dp"
                     android:textColor="@color/black"

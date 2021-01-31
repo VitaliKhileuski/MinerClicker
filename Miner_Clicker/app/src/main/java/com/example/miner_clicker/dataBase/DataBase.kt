@@ -28,13 +28,25 @@ class DataBase(context: Context) {
         val cursor : Cursor? = dataBase?.query(DataBaseInfo.TABLE_NAME,null,null,null,null,null,null)
 
         while(cursor?.moveToNext()!!){
-            player.money=cursor.getColumnIndex(DataBaseInfo.COLUMN_NAME_MONEY)
-            player.gems=cursor.getColumnIndex(DataBaseInfo.COLUMN_NAME_GEMS)
+            player.money=cursor.getInt(cursor.getColumnIndex(DataBaseInfo.COLUMN_NAME_MONEY))
+            player.gems=cursor.getInt(cursor.getColumnIndex(DataBaseInfo.COLUMN_NAME_GEMS))
         }
         cursor.close()
         return player
     }
+    public fun DeleteAllRows(){
+        dataBase?.delete(DataBaseInfo.TABLE_NAME,null,null)
+    }
+
     public fun CloseDataBase(){
         dbHelper.close()
     }
+    public fun UpdateMoney(money: Int){
+        val values : ContentValues = ContentValues().apply {
+            put(DataBaseInfo.COLUMN_NAME_MONEY,money)
+        }
+        val selection = "${DataBaseInfo.COLUMN_NAME_MONEY} LIKE ?"
+        dataBase?.update(DataBaseInfo.TABLE_NAME,values,null,null)
+    }
+
 }
