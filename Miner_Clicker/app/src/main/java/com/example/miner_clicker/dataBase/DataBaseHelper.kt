@@ -11,12 +11,14 @@ class DataBaseHelper(context : Context): SQLiteOpenHelper(context,DataBaseInfo.D
         db?.execSQL(DataBaseInfo.CREATE_TABLE_PLAYER)
         db?.execSQL(DataBaseInfo.CREATE_TABLE_STORAGE)
         db?.execSQL(DataBaseInfo.CREATE_TABLE_ORE)
+        db?.execSQL(DataBaseInfo.CREATE_TABLE_SHOP)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(DataBaseInfo.SQL_DELETE_PLAYER)
         db.execSQL(DataBaseInfo.SQL_DELETE_STORAGE)
         db.execSQL(DataBaseInfo.SQL_DELETE_ORE)
+        db.execSQL(DataBaseInfo.SQL_DELETE_SHOP)
         onCreate(db)
     }
 

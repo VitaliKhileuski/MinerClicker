@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.provider.ContactsContract
 import com.example.miner_clicker.dataBase.tables.OreTable
 import com.example.miner_clicker.dataBase.tables.PlayerTable
+import com.example.miner_clicker.dataBase.tables.ShopTable
 import com.example.miner_clicker.dataBase.tables.StorageTable
 import com.example.miner_clicker.models.*
 import com.example.miner_clicker.models.gameComponents.Player
@@ -49,6 +50,16 @@ class DataBase(context: Context) {
         dataBase?.insert(OreTable.TABLE_NAME,null,values)
     }
 
+    public fun InsertShopData(pickaxe: Pickaxe){
+        val values : ContentValues = ContentValues().apply {
+            put(ShopTable.COLUMN_NAME_PRODUCT_NAME,pickaxe.name)
+            put(ShopTable.COLUMN_NAME_PRODUCT_DESCRIPTION,pickaxe.descriprion)
+            put(ShopTable.COLUMN_NAME_PRODUCT_PRICE,pickaxe.price)
+            put(ShopTable.COLUMN_NAME_PRODUCT_DAMAGE,pickaxe.damage)
+            put(ShopTable.COLUMN_NAME_PRODUCT_SOURCE,pickaxe.imageSource)
+        }
+        dataBase?.insert(ShopTable.TABLE_NAME,null,values)
+    }
 
     public fun ReadPlayerData() : Player{
         val player : Player = Player()
@@ -96,6 +107,21 @@ class DataBase(context: Context) {
         return ore
     }
 
+    public fun ReadShopData() : Pickaxe{
+        val pickaxe : Pickaxe = Pickaxe()
+        val cursor : Cursor? = dataBase?.query(ShopTable.TABLE_NAME,null,null,null,null,null,null)
+
+        while(cursor?.moveToNext()!!){
+            pickaxe.name=cursor.getString(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_NAME))
+            pickaxe.descriprion=cursor.getString(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_DESCRIPTION))
+            pickaxe.price=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_PRICE))
+            pickaxe.damage=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_DAMAGE))
+            pickaxe.imageSource=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_SOURCE))
+
+        }
+        cursor.close()
+        return pickaxe
+    }
 
 
     public fun DeleteAllRows(TABLE_NAME : String){
