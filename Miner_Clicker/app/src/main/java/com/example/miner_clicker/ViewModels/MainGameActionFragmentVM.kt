@@ -10,23 +10,28 @@ import com.example.miner_clicker.models.gameComponents.RandomMinerals
 import com.example.miner_clicker.models.gameComponents.Storage
 
 class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
+    private var player : Player = database.ReadPlayerData()
     private var ore : Ore = database.ReadPOreData()
     private var storage : Storage = database.ReadStorageData()
+
     private var money = MutableLiveData<Int>()
+    private var gems = MutableLiveData<Int>()
+
     private var capacity = MutableLiveData<Int>()
     private var level = MutableLiveData<Int>()
+    private var maxHpOre = MutableLiveData<Int>()
+    private var currentHpOre = MutableLiveData<Int>()
+
     private var textProgressBar = MutableLiveData<String>()
-    private var gems = MutableLiveData<Int>()
+
     public var TextProgressBar : LiveData<String> = textProgressBar
     public var Money : LiveData<Int> = money
-    private var currentHpOre = MutableLiveData<Int>()
     public var CurrentHpOre: LiveData<Int> = currentHpOre
-    private var maxHpOre = MutableLiveData<Int>()
     public var MaxHpOre : LiveData<Int> = maxHpOre
     public var Gems : LiveData<Int> = gems
     public var Capacity : LiveData<Int> = capacity
     public var Level : LiveData<Int> = level
-    public var player : Player = database.ReadPlayerData()
+
 
 
     init {
@@ -55,6 +60,7 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
 
         RandomMinerals.getStorageItems(storage,ore.capacity)  // FIXME: 31.01.2021
         database.UpdateStorage(storage)
+
         ore.SetNewLevel()
         database.UpdateOre(ore)
         RefreshProperties()

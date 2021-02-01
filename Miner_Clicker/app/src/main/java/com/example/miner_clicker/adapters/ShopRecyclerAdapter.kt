@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
 
-class ShopRecyclerAdapter(private var shopItems: List<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.product_name)

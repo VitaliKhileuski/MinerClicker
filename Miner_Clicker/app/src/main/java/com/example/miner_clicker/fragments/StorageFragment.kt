@@ -19,7 +19,7 @@ class StorageFragment(val database :  DataBase) : Fragment() {
     private var _binding:FragmentStorageBinding?=null
     private val binding get() = _binding!!
     private var resources = mutableListOf<StorageItem>()
-    lateinit var recyclerView: RecyclerView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
