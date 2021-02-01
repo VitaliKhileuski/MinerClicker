@@ -11,6 +11,7 @@ import com.example.miner_clicker.models.gameComponents.Storage
 
 class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     private var ore : Ore = database.ReadPOreData()
+    private var storage : Storage = database.ReadStorageData()
     private var money = MutableLiveData<Int>()
     private var capacity = MutableLiveData<Int>()
     private var level = MutableLiveData<Int>()
@@ -46,13 +47,14 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     }
     private fun RefreshProperties(){
         maxHpOre.value =ore.maxHealth
-        currentHpOre.value =ore.maxHealth
+        currentHpOre.value =ore.currenthealth
         capacity.value=ore.capacity
         textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
     }
     fun createNewOre(){
-        //var random : RandomMinerals = RandomMinerals(capacity.value)
-            //    var storage : Storage = random.getStorageItems()  // FIXME: 31.01.2021
+
+        RandomMinerals.getStorageItems(storage,capacity.value!!)  // FIXME: 31.01.2021
+        database.UpdateStorage(storage)
         ore.SetNewLevel()
         database.UpdateOre(ore)
         RefreshProperties()

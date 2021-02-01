@@ -160,5 +160,18 @@ class DataBase(context: Context) {
         }
         dataBase?.update(OreTable.TABLE_NAME,values,null,null)
     }
+    public fun UpdateStorage(storage : Storage){
+        val values : ContentValues = ContentValues().apply {
+            //put(OreTable.COLUMN_NAME_LEVEL,ore.level)
+            //put(OreTable.COLUMN_NAME_MAX_HEALTH,ore.maxHealth)
+            //put(OreTable.COLUMN_NAME_CURRENT_HEALTH,ore.currenthealth)
+            //put(OreTable.COLUMN_NAME_CAPACITY,ore.capacity)
+        }
+
+
+
+        dataBase?.update(StorageTable.TABLE_NAME,values,null,null)
+    }
+
 
 }
