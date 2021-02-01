@@ -7,6 +7,7 @@ import com.example.miner_clicker.adapters.ViewPagerAdapter
 import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.dataBase.tables.OreTable
 import com.example.miner_clicker.dataBase.tables.PlayerTable
+import com.example.miner_clicker.dataBase.tables.ShopTable
 import com.example.miner_clicker.dataBase.tables.StorageTable
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
@@ -68,15 +69,18 @@ class MainActivity : AppCompatActivity() {
    }
     private fun ConnectingWithDataBase(){
         database.OpenDataBase()
-        //database.DeleteAllRows(PlayerTable.TABLE_NAME)
+                //database.DeleteAllRows(PlayerTable.TABLE_NAME)
                 //database.DeleteAllRows(OreTable.TABLE_NAME)
                 //database.DeleteAllRows(StorageTable.TABLE_NAME)
-                //atabase.InsertPlayerData(0,0)
+                //database.DeleteAllRows(ShopTable.TABLE_NAME)
+                //database.InsertPlayerData(0,0)
         //database.InsertStorageData(StorageItem(Stone(),0,200))
         //database.InsertStorageData(StorageItem(Iron(),0,50))
         //database.InsertStorageData(StorageItem(Gold(),0,25))
         //database.InsertStorageData(StorageItem(Diamond(),0,10))
-               // database.InsertOreData(Ore(10,10,5,1))
+        //database.InsertOreData(Ore(10,10,5,1))
+        //database.InsertShopData(Pickaxe())
+        //database.InsertShopData(Pickaxe())
     }
 
     override fun onDestroy() {

@@ -118,14 +118,6 @@ class DataBase(context: Context) {
             pickaxe.price=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_PRICE))
             pickaxe.damage=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_DAMAGE))
             pickaxe.imageSource=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_SOURCE))
-<<<<<<< Updated upstream
-            shop.add(pickaxe)
-=======
-<<<<<<< HEAD
-=======
-            shop.add(pickaxe)
->>>>>>> 658393895a0fac9799cac06f1b6dae4da9f718c5
->>>>>>> Stashed changes
         }
         cursor.close()
         return shop
@@ -169,9 +161,9 @@ class DataBase(context: Context) {
         dataBase?.update(OreTable.TABLE_NAME,values,null,null)
     }
     public fun UpdateStorage(storage : Storage){
-        for(i in 0..3) {
+        for(i in 1..4) {
             val values : ContentValues = ContentValues().apply {
-                put(StorageTable.COLUMN_NAME_AMOUNT,storage.storageItems[i].numberOfMineral)
+                put(StorageTable.COLUMN_NAME_AMOUNT,storage.storageItems[i-1].numberOfMineral)
             }
             dataBase?.update(StorageTable.TABLE_NAME,values,"_id = $i",null)
         }
