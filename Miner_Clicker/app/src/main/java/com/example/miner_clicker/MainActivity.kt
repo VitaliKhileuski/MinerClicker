@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ShopFragment(),"Shop")
+        adapter.addFragment(ShopFragment(database),"Shop")
         adapter.addFragment(StorageFragment(database),"storage")
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
