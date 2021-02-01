@@ -53,7 +53,7 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     }
     fun createNewOre(){
 
-        RandomMinerals.getStorageItems(storage,capacity.value!!)  // FIXME: 31.01.2021
+        RandomMinerals.getStorageItems(storage,ore.capacity)  // FIXME: 31.01.2021
         database.UpdateStorage(storage)
         ore.SetNewLevel()
         database.UpdateOre(ore)
