@@ -107,20 +107,21 @@ class DataBase(context: Context) {
         return ore
     }
 
-    public fun ReadShopData() : Pickaxe{
-        val pickaxe : Pickaxe = Pickaxe()
+    public fun ReadShopData() : MutableList<Pickaxe>{
+        val shop = mutableListOf<Pickaxe>()
         val cursor : Cursor? = dataBase?.query(ShopTable.TABLE_NAME,null,null,null,null,null,null)
 
         while(cursor?.moveToNext()!!){
+            val pickaxe : Pickaxe = Pickaxe()
             pickaxe.name=cursor.getString(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_NAME))
             pickaxe.descriprion=cursor.getString(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_DESCRIPTION))
             pickaxe.price=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_PRICE))
             pickaxe.damage=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_DAMAGE))
             pickaxe.imageSource=cursor.getInt(cursor.getColumnIndex(ShopTable.COLUMN_NAME_PRODUCT_SOURCE))
-
+            shop.add(pickaxe)
         }
         cursor.close()
-        return pickaxe
+        return shop
     }
 
 
