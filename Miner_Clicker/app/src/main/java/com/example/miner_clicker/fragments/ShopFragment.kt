@@ -15,7 +15,6 @@ import com.example.miner_clicker.viewModels.ShopFragmentVM
 class ShopFragment(val database : DataBase) : Fragment() {
     private var _binding:FragmentShopBinding?=null
     private val binding get() = _binding!!
-    private var products = mutableListOf<Pickaxe>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +34,6 @@ class ShopFragment(val database : DataBase) : Fragment() {
         binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData())
 
         return binding.root
-    }
-
-    private fun addToList(product: Pickaxe){
-        products.add(product)
     }
 
     override fun onDestroy() {

@@ -17,6 +17,12 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
         val productDescription: TextView = itemView.findViewById(R.id.product_description)
         val productImage: ImageView = itemView.findViewById(R.id.product_image)
         val productBuyButton: Button = itemView.findViewById(R.id.product_buying_button)
+
+        init {
+            productBuyButton.setOnClickListener {
+
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
