@@ -41,7 +41,7 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     }
     fun Click(){
         money.value=money.value!!.plus(1)
-        database.UpdateMoney(money.value!!)
+
         currentHpOre.value = currentHpOre.value!!.minus(1)
         ore.currenthealth--
         database.UpdateOreCurrentHealth(ore.currenthealth)
@@ -58,12 +58,15 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     }
     fun createNewOre(){
 
-        RandomMinerals.getStorageItems(storage,ore.capacity)  // FIXME: 31.01.2021
-        database.UpdateStorage(storage)
-
+        RandomMinerals.getStorageItems(storage,ore.capacity)
+        UpdateDatabase()
         ore.SetNewLevel()
-        database.UpdateOre(ore)
         RefreshProperties()
 
+    }
+    private fun UpdateDatabase(){
+        database.UpdateStorage(storage)
+        database.UpdateMoney(money.value!!)
+        database.UpdateOre(ore)
     }
 }
