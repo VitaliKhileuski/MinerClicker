@@ -48,6 +48,7 @@ class DataBaseHelper(context : Context): SQLiteOpenHelper(context,DataBaseInfo.D
         db.execSQL(DataBaseInfo.SQL_DELETE_STORAGE)
         db.execSQL(DataBaseInfo.SQL_DELETE_ORE)
         db.execSQL(DataBaseInfo.SQL_DELETE_SHOP)
+        db.execSQL(DataBaseInfo.SQL_DELETE_PICKAXE)
         onCreate(db)
     }
 
