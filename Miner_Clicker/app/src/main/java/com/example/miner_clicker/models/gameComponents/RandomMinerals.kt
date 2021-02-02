@@ -27,7 +27,7 @@ import com.example.miner_clicker.models.Stone
                 val minerals: MutableList<Int> = mutableListOf(0, 0, 0, 0)
                 val secondRange: Int = chancesForMinerals[0] + chancesForMinerals[1]
                 val thirdRange: Int = secondRange + chancesForMinerals[2]
-                while (_capacity >= 0) {
+                while (_capacity > 0) {
                     randNumber = (1..100).shuffled().first()
                     when (randNumber) {
                         in 1..chancesForMinerals[0] -> minerals[0]++
