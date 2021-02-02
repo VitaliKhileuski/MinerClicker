@@ -21,7 +21,7 @@
             android:layout_margin="2dp"
             android:src="@mipmap/ic_launcher_round" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -36,15 +36,35 @@
                 android:text="Resource name"
                 android:textSize="14sp" />
 
+
             <TextView
                 android:id="@+id/resource_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_toStartOf="@+id/separator"
                 android:text="amount"
                 android:textSize="14sp" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/resource_max_capacity"
+                android:layout_marginHorizontal="5dp"
+                android:text="/"/>
+
+            <TextView
+                android:id="@+id/resource_max_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:text="capacity"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -18,6 +18,7 @@ class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : Recy
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val resourceName: TextView = itemView.findViewById(R.id.resource_name)
         val resourceAmount: TextView = itemView.findViewById(R.id.resource_amount)
+        val resourceCapacity: TextView = itemView.findViewById(R.id.resource_max_capacity)
         val resourceImage: ImageView = itemView.findViewById(R.id.resource_image)
     }
 
@@ -29,6 +30,7 @@ class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : Recy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.resourceName.text = storageItems[position].mineral.name
         holder.resourceAmount.text =storageItems[position].numberOfMineral.toString()
+        holder.resourceCapacity.text = storageItems[position].capacity.toString()
         holder.resourceImage.setImageResource(storageItems[position].mineral.iconSource)
     }
 
