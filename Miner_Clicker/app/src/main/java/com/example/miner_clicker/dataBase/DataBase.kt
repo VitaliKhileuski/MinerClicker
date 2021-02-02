@@ -73,22 +73,22 @@ class DataBase(context: Context) {
         val player : Player = Player()
         val pickaxe : Pickaxe = Pickaxe()
         val cursor : Cursor? = dataBase?.query(PlayerTable.TABLE_NAME,null,null,null,null,null,null)
-        val cursor2 : Cursor? = dataBase?.query(PickaxeTable.TABLE_NAME,null,null,null,null,null,null)
 
         while(cursor?.moveToNext()!!){
             player.money=cursor.getInt(cursor.getColumnIndex(PlayerTable.COLUMN_NAME_MONEY))
             player.gems=cursor.getInt(cursor.getColumnIndex(PlayerTable.COLUMN_NAME_GEMS))
         }
+        cursor.close()
+
+        val cursor2 : Cursor? = dataBase?.query(PickaxeTable.TABLE_NAME,null,null,null,null,null,null)
         while(cursor2?.moveToNext()!!){
-            pickaxe.name=cursor.getString(cursor.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_NAME))
-            pickaxe.price=cursor.getInt(cursor.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_PRICE))
-            pickaxe.descriprion=cursor.getString(cursor.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_DESCRIPTION))
-            pickaxe.damage=cursor.getInt(cursor.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_DAMAGE))
-            pickaxe.imageSource=cursor.getInt(cursor.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_IMAGE_SOURCE))
+            pickaxe.name=cursor2.getString(cursor2.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_NAME))
+            pickaxe.price=cursor2.getInt(cursor2.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_PRICE))
+            pickaxe.descriprion=cursor2.getString(cursor2.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_DESCRIPTION))
+            pickaxe.damage=cursor2.getInt(cursor2.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_DAMAGE))
+            pickaxe.imageSource=cursor2.getInt(cursor2.getColumnIndex(PickaxeTable.COLUMN_NAME_PICKAXE_IMAGE_SOURCE))
         }
         player.currentPickaxe = pickaxe
-
-        cursor.close()
         cursor2.close()
         return player
     }
