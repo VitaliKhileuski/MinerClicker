@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
    }
     private fun ConnectingWithDataBase(){
+
         database.OpenDataBase()
                 //database.DeleteAllRows(PlayerTable.TABLE_NAME)
                 //database.DeleteAllRows(OreTable.TABLE_NAME)
