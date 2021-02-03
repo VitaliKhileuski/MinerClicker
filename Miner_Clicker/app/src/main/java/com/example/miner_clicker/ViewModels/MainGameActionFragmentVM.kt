@@ -1,8 +1,12 @@
 package com.example.miner_clicker.viewModels
 
+
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.miner_clicker.R
+import com.example.miner_clicker.adapters.ConvertBigNumbers
 import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.models.Ore
 import com.example.miner_clicker.models.gameComponents.Player
@@ -32,15 +36,24 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     public var Capacity : LiveData<Int> = capacity
     public var Level : LiveData<Int> = level
 
+    public var flag : Boolean = false
+    private var stringMoney = MutableLiveData<String>()
+    public var StringMoney : LiveData<String> = stringMoney
 
 
     init {
         money.value = player.money
+        if(money.value!!>=1000)
+        stringMoney.value =ConvertBigNumbers.ToString(money.value!!)
         gems.value = player.gems
         RefreshProperties()
     }
     fun Click(){
         money.value=money.value!!.plus(1)
+        stringMoney.value=money.value.toString()
+        if(money.value!!>=1000){
+           stringMoney.value=ConvertBigNumbers.ToString(money.value!!)
+        }
 
         currentHpOre.value = currentHpOre.value!!.minus(1)
         ore.currenthealth--
