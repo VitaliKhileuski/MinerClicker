@@ -43,8 +43,13 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
 
     init {
         money.value = player.money
-        if(money.value!!>=1000)
-        stringMoney.value =ConvertBigNumbers.ToString(money.value!!)
+        if(money.value!!>=1000){
+            stringMoney.value =ConvertBigNumbers.ToString(money.value!!)
+        }else{
+        stringMoney.value = money.value.toString()
+        }
+
+
         gems.value = player.gems
         RefreshProperties()
     }
