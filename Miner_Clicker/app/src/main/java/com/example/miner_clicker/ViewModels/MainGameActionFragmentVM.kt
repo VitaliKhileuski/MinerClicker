@@ -77,8 +77,9 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
     fun createNewOre(){
 
         RandomMinerals.getStorageItems(storage,ore.capacity)
-        UpdateDatabase()
+
         ore.SetNewLevel()
+        UpdateDatabase()
         RefreshProperties()
 
     }

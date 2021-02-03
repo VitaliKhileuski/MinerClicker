@@ -127,7 +127,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_miner"
-                        android:layout_centerInParent="true"
+                        android:layout_marginTop="100dp"
+                        android:layout_centerHorizontal="true"
                         ></ImageView>
             </RelativeLayout>
         </GridLayout>
