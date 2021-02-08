@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
+import com.example.miner_clicker.dataBase.DataBase
 
-class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val database : DataBase) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.product_name)
@@ -19,8 +21,11 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
         val productBuyButton: Button = itemView.findViewById(R.id.product_buying_button)
 
         init {
-            productBuyButton.setOnClickListener {
-
+            productBuyButton.setOnClickListener { v : View ->
+                val position : Int = adapterPosition
+                var pickaxe : Pickaxe = shopItems[position]
+                database.DeleteAllRows("Pickaxe")
+                database.InsertPickaxeData(pickaxe)
             }
         }
     }
