@@ -5,7 +5,7 @@ import com.example.miner_clicker.dataBase.tables.*
 import com.example.miner_clicker.models.Ore
 
 object DataBaseInfo :BaseColumns {
-    public const val DATABASE_VERSION : Int = 10
+    public const val DATABASE_VERSION : Int = 11
     public const val DATABASE_NAME : String = "player.db"
 
     public const val CREATE_TABLE_PLAYER = "CREATE TABLE IF NOT EXISTS ${PlayerTable.TABLE_NAME} (" +

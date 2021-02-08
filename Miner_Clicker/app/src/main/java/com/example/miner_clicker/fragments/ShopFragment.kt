@@ -31,7 +31,7 @@ class ShopFragment(val database : DataBase) : Fragment() {
         binding.lifecycleOwner=this
         binding.viewModel= ShopFragmentVM(database)
         binding.shopRecyclerView.layoutManager=LinearLayoutManager(this.context)
-        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData())
+        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database)
 
         return binding.root
     }

@@ -63,8 +63,8 @@ class MainGameActionFragmentVM(var database : DataBase, var storageFragment: Sto
            stringMoney.value=ConvertBigNumbers.ToString(money.value!!)
         }
 
-        currentHpOre.value = currentHpOre.value!!.minus(1)
-        ore.currenthealth--
+        currentHpOre.value = currentHpOre.value!!.minus(player.currentPickaxe.damage)
+        ore.currenthealth = currentHpOre.value!!
         database.UpdateOreCurrentHealth(ore.currenthealth)
         textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
         if(currentHpOre.value!! <= 0){
