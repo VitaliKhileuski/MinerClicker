@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
     var database: DataBase = DataBase(this)
+    var storageFragment: StorageFragment = StorageFragment(database)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ShopFragment(database),"Shop")
-        adapter.addFragment(StorageFragment(database),"storage")
+        adapter.addFragment(storageFragment,"storage")
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
         viewPager = findViewById(R.id.viewPager)
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-       adapter.addFragment(MainGameActionFragment(database))
+       adapter.addFragment(MainGameActionFragment(database, storageFragment))
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 

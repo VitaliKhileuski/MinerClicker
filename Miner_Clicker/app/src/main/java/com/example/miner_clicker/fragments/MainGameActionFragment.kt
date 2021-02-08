@@ -10,7 +10,7 @@ import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 
-class MainGameActionFragment(database : DataBase) : Fragment() {
+class MainGameActionFragment(database : DataBase, var storageFragment: StorageFragment) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
     private val binding get() = _binding!!
     private val dataBase=database
@@ -27,7 +27,7 @@ class MainGameActionFragment(database : DataBase) : Fragment() {
 
         _binding = FragmentMainGameActionBinding.inflate(inflater, container, false)
         binding.lifecycleOwner=this
-        binding.viewModel= MainGameActionFragmentVM(dataBase)
+        binding.viewModel= MainGameActionFragmentVM(dataBase, storageFragment)
         return binding.root
     }
 

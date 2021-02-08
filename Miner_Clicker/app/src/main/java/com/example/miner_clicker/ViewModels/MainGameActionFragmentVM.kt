@@ -5,15 +5,18 @@ package com.example.miner_clicker.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
 import com.example.miner_clicker.adapters.ConvertBigNumbers
+import com.example.miner_clicker.adapters.StorageRecyclerAdapter
 import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.fragments.StorageFragment
 import com.example.miner_clicker.models.Ore
 import com.example.miner_clicker.models.gameComponents.Player
 import com.example.miner_clicker.models.gameComponents.RandomMinerals
 import com.example.miner_clicker.models.gameComponents.Storage
 
-class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
+class MainGameActionFragmentVM(var database : DataBase, var storageFragment: StorageFragment):ViewModel() {
     private var player : Player = database.ReadPlayerData()
     private var ore : Ore = database.ReadPOreData()
     private var storage : Storage = database.ReadStorageData()
@@ -66,6 +69,7 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
         textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
         if(currentHpOre.value!! <= 0){
             createNewOre()
+            UpdateStorageRecyclerView()
         }
     }
     private fun RefreshProperties(){
@@ -87,5 +91,10 @@ class MainGameActionFragmentVM(var database : DataBase):ViewModel() {
         database.UpdateStorage(storage)
         database.UpdateMoney(money.value!!)
         database.UpdateOre(ore)
+    }
+
+    private fun UpdateStorageRecyclerView(){
+        var test = storageFragment.view?.findViewById<RecyclerView>(R.id.storage_recyclerView)
+        test?.adapter = StorageRecyclerAdapter(database.ReadStorageData().storageItems)
     }
 }
