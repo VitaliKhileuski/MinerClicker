@@ -16,7 +16,12 @@ import com.example.miner_clicker.models.Stone
             fun getStorageItems(storage: Storage, capacity: Int) {
                 val minerals: MutableList<Int> = RandMineral(capacity)
                 for (i in 0..3) {
-                    storage.storageItems[i].numberOfMineral += minerals[i]
+                    if(storage.storageItems[i].numberOfMineral+minerals[i]>storage.storageItems[i].capacity){
+                        storage.storageItems[i].numberOfMineral=storage.storageItems[i].capacity
+                    }
+                    else {
+                        storage.storageItems[i].numberOfMineral += minerals[i]
+                    }
                 }
 
             }
