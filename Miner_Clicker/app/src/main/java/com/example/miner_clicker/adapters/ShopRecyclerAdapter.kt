@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
 import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.fragments.MainGameActionFragment
 
-class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val database : DataBase) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val database : DataBase, var mainGameActionFragment: MainGameActionFragment) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.product_name)
@@ -24,8 +25,7 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val datab
             productBuyButton.setOnClickListener { v : View ->
                 val position : Int = adapterPosition
                 var pickaxe : Pickaxe = shopItems[position]
-                database.DeleteAllRows("Pickaxe")
-                database.InsertPickaxeData(pickaxe)
+                mainGameActionFragment.binding.viewModel!!.updateMoneyAfterBuying(pickaxe)
             }
         }
     }

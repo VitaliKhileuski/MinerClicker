@@ -11,6 +11,7 @@ import com.example.miner_clicker.adapters.StorageRecyclerAdapter
 import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.fragments.StorageFragment
 import com.example.miner_clicker.models.Ore
+import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.models.gameComponents.Player
 import com.example.miner_clicker.models.gameComponents.RandomMinerals
 import com.example.miner_clicker.models.gameComponents.Storage
@@ -89,5 +90,20 @@ class MainGameActionFragmentVM(var database: DataBase, var storageFragment: Stor
     private fun UpdateStorageRecyclerView() {
         var test = storageFragment.view?.findViewById<RecyclerView>(R.id.storage_recyclerView)
         test?.adapter = StorageRecyclerAdapter(database.ReadStorageData().storageItems)
+    }
+
+    fun updateMoneyAfterBuying(pickaxe: Pickaxe) {
+        if(pickaxe.price <= money.value!!){
+            money.value = money.value!!.minus(pickaxe.price)
+            if (money.value!! >= 1000) {
+                stringMoney.value = ConvertBigNumbers.ToString(money.value!!)
+            } else {
+                stringMoney.value = money.value.toString()
+            }
+            database.UpdateMoney(money.value!!)
+            player = database.ReadPlayerData()
+            database.DeleteAllRows("Pickaxe")
+            database.InsertPickaxeData(pickaxe)
+        }
     }
 }

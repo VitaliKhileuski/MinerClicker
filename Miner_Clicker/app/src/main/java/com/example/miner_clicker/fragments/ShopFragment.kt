@@ -12,7 +12,7 @@ import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.databinding.FragmentShopBinding
 import com.example.miner_clicker.viewModels.ShopFragmentVM
 
-class ShopFragment(val database : DataBase) : Fragment() {
+class ShopFragment(val database : DataBase, var mainGameActionFragment: MainGameActionFragment) : Fragment() {
     private var _binding:FragmentShopBinding?=null
     private val binding get() = _binding!!
 
@@ -31,7 +31,7 @@ class ShopFragment(val database : DataBase) : Fragment() {
         binding.lifecycleOwner=this
         binding.viewModel= ShopFragmentVM(database)
         binding.shopRecyclerView.layoutManager=LinearLayoutManager(this.context)
-        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database)
+        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database, mainGameActionFragment)
 
         return binding.root
     }

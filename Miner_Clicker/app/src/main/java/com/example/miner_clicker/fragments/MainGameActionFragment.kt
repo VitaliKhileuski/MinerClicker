@@ -12,7 +12,7 @@ import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 class MainGameActionFragment(database : DataBase, var storageFragment: StorageFragment) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
-    private val binding get() = _binding!!
+    public val binding get() = _binding!!
     private val dataBase=database
 
     override fun onCreate(savedInstanceState: Bundle?) {
