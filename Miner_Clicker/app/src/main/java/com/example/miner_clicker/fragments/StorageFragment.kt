@@ -1,24 +1,25 @@
 package com.example.miner_clicker.fragments
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.gameComponents.StorageItem
 import com.example.miner_clicker.adapters.StorageRecyclerAdapter
-import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.databinding.FragmentStorageBinding
-import com.example.miner_clicker.viewModels.StorageFragmentVM
+import com.example.miner_clicker.data2.Storage
+import com.example.miner_clicker.data2.StorageViewModel
 
 
-class StorageFragment(val database :  DataBase) : Fragment() {
+class StorageFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
     private var _binding:FragmentStorageBinding?=null
     private val binding get() = _binding!!
     private var resources = mutableListOf<StorageItem>()
+
 
 
 
@@ -32,13 +33,23 @@ class StorageFragment(val database :  DataBase) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+
         _binding = FragmentStorageBinding.inflate(inflater, container, false)
 
 
+
         binding.lifecycleOwner=this
-        binding.viewModel= StorageFragmentVM(database)
+
+
+
+        //binding.viewModel= StorageFragmentVM(database)
+        val adapter = StorageRecyclerAdapter()
         binding.storageRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.storageRecyclerView.adapter = StorageRecyclerAdapter(database.ReadStorageData().storageItems)
+        binding.storageRecyclerView.adapter = adapter
+        mStorageViewModel.readAllData.observe(viewLifecycleOwner, Observer { storage ->
+           adapter.SetData(storage)
+        })
+
 
         return binding.root
     }
@@ -51,4 +62,5 @@ class StorageFragment(val database :  DataBase) : Fragment() {
         super.onDestroy()
         _binding=null
     }
+
 }

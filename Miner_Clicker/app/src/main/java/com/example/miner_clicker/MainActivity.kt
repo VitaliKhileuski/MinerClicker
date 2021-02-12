@@ -2,13 +2,11 @@ package com.example.miner_clicker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
-import com.example.miner_clicker.dataBase.DataBase
-import com.example.miner_clicker.dataBase.tables.OreTable
-import com.example.miner_clicker.dataBase.tables.PlayerTable
-import com.example.miner_clicker.dataBase.tables.ShopTable
-import com.example.miner_clicker.dataBase.tables.StorageTable
+import com.example.miner_clicker.data2.Storage
+import com.example.miner_clicker.data2.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
 import com.example.miner_clicker.models.*
@@ -20,8 +18,8 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
-    var database: DataBase = DataBase(this)
-    var storageFragment: StorageFragment = StorageFragment(database)
+    private lateinit var mStorageViewModel : StorageViewModel
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this,R.layout.activity_main)
         binding.lifecycleOwner=this
         binding.viewModel= MainActivityViewModel()
-        ConnectingWithDataBase()
+        mStorageViewModel= ViewModelProvider(this).get(StorageViewModel::class.java)
 
         SetUpTabs()
         Set()
@@ -39,15 +37,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        ConnectingWithDataBase()
+
     }
 
 
 
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ShopFragment(database),"Shop")
-        adapter.addFragment(storageFragment,"storage")
+        adapter.addFragment(ShopFragment(),"Shop")
+        adapter.addFragment(StorageFragment(mStorageViewModel),"storage")
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
         viewPager = findViewById(R.id.viewPager)
@@ -63,30 +61,14 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-       adapter.addFragment(MainGameActionFragment(database, storageFragment))
+       adapter.addFragment(MainGameActionFragment(mStorageViewModel))
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 
    }
-    private fun ConnectingWithDataBase(){
 
-        database.OpenDataBase()
-                //database.DeleteAllRows(PlayerTable.TABLE_NAME)
-                //database.DeleteAllRows(OreTable.TABLE_NAME)
-                //database.DeleteAllRows(StorageTable.TABLE_NAME)
-                //database.DeleteAllRows(ShopTable.TABLE_NAME)
-                //database.InsertPlayerData(0,0)
-        //database.InsertStorageData(StorageItem(Stone(),0,200))
-        //database.InsertStorageData(StorageItem(Iron(),0,50))
-        //database.InsertStorageData(StorageItem(Gold(),0,25))
-        //database.InsertStorageData(StorageItem(Diamond(),0,10))
-        //database.InsertOreData(Ore(10,10,5,1))
-        //database.InsertShopData(Pickaxe())
-        //database.InsertShopData(Pickaxe())
-    }
 
     override fun onDestroy() {
         super.onDestroy()
-        database.CloseDataBase()
     }
 }

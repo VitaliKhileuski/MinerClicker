@@ -9,17 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
 import com.example.miner_clicker.adapters.ConvertBigNumbers
 import com.example.miner_clicker.adapters.StorageRecyclerAdapter
-import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.data2.StorageViewModel
 import com.example.miner_clicker.fragments.StorageFragment
 import com.example.miner_clicker.models.Ore
 import com.example.miner_clicker.models.gameComponents.Player
 import com.example.miner_clicker.models.gameComponents.RandomMinerals
 import com.example.miner_clicker.models.gameComponents.Storage
 
-class MainGameActionFragmentVM(var database : DataBase, var storageFragment: StorageFragment):ViewModel() {
-    private var player : Player = database.ReadPlayerData()
-    private var ore : Ore = database.ReadPOreData()
-    private var storage : Storage = database.ReadStorageData()
+class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel):ViewModel() {
+    //private var player : Player = database.ReadPlayerData()
+    //private var ore : Ore = database.ReadPOreData()
+    //private var storage : Storage = database.ReadStorageData()
 
     private var money = MutableLiveData<Int>()
     private var gems = MutableLiveData<Int>()
@@ -45,56 +45,63 @@ class MainGameActionFragmentVM(var database : DataBase, var storageFragment: Sto
 
 
     init {
-        money.value = player.money
-        if(money.value!!>=1000){
-            stringMoney.value =ConvertBigNumbers.ToString(money.value!!)
-        }else{
-        stringMoney.value = money.value.toString()
+
+        //money.value = player.money
+        //if(money.value!!>=1000){
+          //  stringMoney.value =ConvertBigNumbers.ToString(money.value!!)
+        //}else{
+       // stringMoney.value = money.value.toString()
         }
 
 
-        gems.value = player.gems
-        RefreshProperties()
-    }
+        //gems.value = player.gems
+        //RefreshProperties()
+fun NewClick(){
+    mStorageViewModel.deleteById(1)
+}
+
+
+}
     fun Click(){
-        money.value=money.value!!.plus(1)
-        stringMoney.value=money.value.toString()
-        if(money.value!!>=1000){
-           stringMoney.value=ConvertBigNumbers.ToString(money.value!!)
+
+        //money.value=money.value!!.plus(1)
+        //stringMoney.value=money.value.toString()
+        //if(money.value!!>=1000){
+           //stringMoney.value=ConvertBigNumbers.ToString(money.value!!)
         }
 
-        currentHpOre.value = currentHpOre.value!!.minus(player.currentPickaxe.damage)
-        ore.currenthealth = currentHpOre.value!!
-        database.UpdateOreCurrentHealth(ore.currenthealth)
-        textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
-        if(currentHpOre.value!! <= 0){
-            createNewOre()
-            UpdateStorageRecyclerView()
-        }
-    }
+        //currentHpOre.value = currentHpOre.value!!.minus(player.currentPickaxe.damage)
+        //ore.currenthealth = currentHpOre.value!!
+        //database.UpdateOreCurrentHealth(ore.currenthealth)
+        //textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
+        //if(currentHpOre.value!! <= 0){
+          //  createNewOre()
+           // UpdateStorageRecyclerView()
+        //}
+    //}
     private fun RefreshProperties(){
-        maxHpOre.value =ore.maxHealth
-        currentHpOre.value =ore.currenthealth
-        capacity.value=ore.capacity
-        textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
+        //maxHpOre.value =ore.maxHealth
+        //currentHpOre.value =ore.currenthealth
+        //capacity.value=ore.capacity
+        //textProgressBar.value=currentHpOre.value.toString()+"/"+maxHpOre.value.toString()
     }
     fun createNewOre(){
 
-        RandomMinerals.getStorageItems(storage,ore.capacity)
+        //RandomMinerals.getStorageItems(storage,ore.capacity)
 
-        ore.SetNewLevel()
-        UpdateDatabase()
+        //ore.SetNewLevel()
+        //UpdateDatabase()
         RefreshProperties()
 
     }
     private fun UpdateDatabase(){
-        database.UpdateStorage(storage)
-        database.UpdateMoney(money.value!!)
-        database.UpdateOre(ore)
+        //database.UpdateStorage(storage)
+        //database.UpdateMoney(money.value!!)
+        //database.UpdateOre(ore)
     }
 
     private fun UpdateStorageRecyclerView(){
-        var test = storageFragment.view?.findViewById<RecyclerView>(R.id.storage_recyclerView)
-        test?.adapter = StorageRecyclerAdapter(database.ReadStorageData().storageItems)
+        //var test = storageFragment.view?.findViewById<RecyclerView>(R.id.storage_recyclerView)
+        //test?.adapter = StorageRecyclerAdapter(database.ReadStorageData().storageItems)
     }
-}
+

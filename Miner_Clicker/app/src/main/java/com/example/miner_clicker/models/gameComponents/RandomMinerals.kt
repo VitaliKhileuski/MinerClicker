@@ -1,6 +1,6 @@
 package com.example.miner_clicker.models.gameComponents
 
-import com.example.miner_clicker.dataBase.DataBase
+
 import com.example.miner_clicker.models.Diamond
 import com.example.miner_clicker.models.Gold
 import com.example.miner_clicker.models.Iron

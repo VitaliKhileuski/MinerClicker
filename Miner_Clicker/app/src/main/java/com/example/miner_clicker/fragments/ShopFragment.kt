@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.adapters.ShopRecyclerAdapter
-import com.example.miner_clicker.dataBase.DataBase
 import com.example.miner_clicker.databinding.FragmentShopBinding
 import com.example.miner_clicker.viewModels.ShopFragmentVM
 
-class ShopFragment(val database : DataBase) : Fragment() {
+class ShopFragment() : Fragment() {
     private var _binding:FragmentShopBinding?=null
     private val binding get() = _binding!!
 
@@ -29,9 +28,9 @@ class ShopFragment(val database : DataBase) : Fragment() {
         _binding = FragmentShopBinding.inflate(inflater, container, false)
 
         binding.lifecycleOwner=this
-        binding.viewModel= ShopFragmentVM(database)
+        //binding.viewModel= ShopFragmentVM(database)
         binding.shopRecyclerView.layoutManager=LinearLayoutManager(this.context)
-        binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database)
+        //binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database)
 
         return binding.root
     }

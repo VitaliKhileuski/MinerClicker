@@ -10,22 +10,27 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
-import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.models.gameComponents.Player
 
-class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val database : DataBase) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.product_name)
         val productDescription: TextView = itemView.findViewById(R.id.product_description)
         val productImage: ImageView = itemView.findViewById(R.id.product_image)
         val productBuyButton: Button = itemView.findViewById(R.id.product_buying_button)
-
+        var player : Player = Player()
         init {
             productBuyButton.setOnClickListener { v : View ->
+                //player=database.ReadPlayerData()
+
                 val position : Int = adapterPosition
                 var pickaxe : Pickaxe = shopItems[position]
-                database.DeleteAllRows("Pickaxe")
-                database.InsertPickaxeData(pickaxe)
+                if(player.money>=pickaxe.price){
+                  //  database.DeleteAllRows("Pickaxe")
+                    //database.InsertPickaxeData(pickaxe)
+                    //database.UpdateMoney(player.money-pickaxe.price)
+                }
             }
         }
     }
@@ -40,10 +45,12 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val datab
         holder.productDescription.text = shopItems[position].descriprion
         holder.productImage.setImageResource(shopItems[position].imageSource)
         holder.productBuyButton.text = shopItems[position].price.toString()
+
     }
 
     override fun getItemCount(): Int {
         return shopItems.count()
     }
+
 
 }

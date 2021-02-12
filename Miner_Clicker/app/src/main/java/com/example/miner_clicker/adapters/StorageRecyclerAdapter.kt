@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
-import com.example.miner_clicker.models.gameComponents.StorageItem
+import com.example.miner_clicker.data2.Storage
 
-class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : RecyclerView.Adapter<StorageRecyclerAdapter.ViewHolder>() {
+class StorageRecyclerAdapter() : RecyclerView.Adapter<StorageRecyclerAdapter.ViewHolder>() {
 
+
+    private var storageItems: List<Storage> = emptyList<Storage>()
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -28,14 +28,18 @@ class StorageRecyclerAdapter(private var storageItems: List<StorageItem>) : Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.resourceName.text = storageItems[position].mineral.name
+        holder.resourceName.text = storageItems[position].mineral
         holder.resourceAmount.text =storageItems[position].numberOfMineral.toString()
-        holder.resourceCapacity.text = storageItems[position].capacity.toString()
-        holder.resourceImage.setImageResource(storageItems[position].mineral.iconSource)
+        holder.resourceCapacity.text = storageItems[position].Capacity.toString()
+       // holder.resourceImage.setImageResource(storageItems[position].mineral.iconSource)
     }
 
     override fun getItemCount(): Int {
         return storageItems.count()
+    }
+    public fun SetData(storage : List<Storage>){
+    this.storageItems=storage
+     notifyDataSetChanged()
     }
 
 }
