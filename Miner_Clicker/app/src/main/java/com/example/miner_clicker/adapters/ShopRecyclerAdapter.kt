@@ -10,9 +10,16 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
+<<<<<<< HEAD
 import com.example.miner_clicker.models.gameComponents.Player
 
 class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+=======
+import com.example.miner_clicker.dataBase.DataBase
+import com.example.miner_clicker.fragments.MainGameActionFragment
+
+class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>, val database : DataBase, var mainGameActionFragment: MainGameActionFragment) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+>>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.product_name)
@@ -26,11 +33,15 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
 
                 val position : Int = adapterPosition
                 var pickaxe : Pickaxe = shopItems[position]
+<<<<<<< HEAD
                 if(player.money>=pickaxe.price){
                   //  database.DeleteAllRows("Pickaxe")
                     //database.InsertPickaxeData(pickaxe)
                     //database.UpdateMoney(player.money-pickaxe.price)
                 }
+=======
+                mainGameActionFragment.binding.viewModel!!.updateMoneyAfterBuying(pickaxe)
+>>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
             }
         }
     }

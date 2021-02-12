@@ -18,8 +18,14 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
+<<<<<<< HEAD
     private lateinit var mStorageViewModel : StorageViewModel
 
+=======
+    var database: DataBase = DataBase(this)
+    var storageFragment: StorageFragment = StorageFragment(database)
+    var mainGameActionFragment: MainGameActionFragment = MainGameActionFragment(database, storageFragment)
+>>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +50,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
+<<<<<<< HEAD
         adapter.addFragment(ShopFragment(),"Shop")
         adapter.addFragment(StorageFragment(mStorageViewModel),"storage")
+=======
+        adapter.addFragment(ShopFragment(database, mainGameActionFragment),"Shop")
+        adapter.addFragment(storageFragment,"storage")
+>>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
         viewPager = findViewById(R.id.viewPager)
@@ -61,7 +72,11 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
+<<<<<<< HEAD
        adapter.addFragment(MainGameActionFragment(mStorageViewModel))
+=======
+       adapter.addFragment(mainGameActionFragment)
+>>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 
