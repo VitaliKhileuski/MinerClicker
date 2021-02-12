@@ -12,13 +12,8 @@ import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 class MainGameActionFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
-<<<<<<< HEAD
     private val binding get() = _binding!!
-    //private val dataBase=database
-=======
     public val binding get() = _binding!!
-    private val dataBase=database
->>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

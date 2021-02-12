@@ -5,6 +5,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
+import com.example.miner_clicker.data2.player.Player
+import com.example.miner_clicker.data2.player.PlayerViewModel
 import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
@@ -16,24 +18,21 @@ import com.google.android.material.tabs.TabLayout
 class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
-<<<<<<< HEAD
     private lateinit var mStorageViewModel : StorageViewModel
+    private lateinit var mPlayerViewModel : PlayerViewModel
 
-=======
-    var database: DataBase = DataBase(this)
-    var storageFragment: StorageFragment = StorageFragment(database)
-    var mainGameActionFragment: MainGameActionFragment = MainGameActionFragment(database, storageFragment)
->>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this,R.layout.activity_main)
-        binding.lifecycleOwner=this
-        binding.viewModel= MainActivityViewModel()
-        mStorageViewModel= ViewModelProvider(this).get(StorageViewModel::class.java)
-
+        binding.lifecycleOwner = this
+        binding.viewModel = MainActivityViewModel()
+        mStorageViewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
+        mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        mPlayerViewModel.addPlayer(Player(1,0,0,1))
         SetUpTabs()
         Set()
 
@@ -48,15 +47,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun SetUpTabs(){
         val adapter=ViewPagerAdapter(supportFragmentManager)
-<<<<<<< HEAD
+
         adapter.addFragment(ShopFragment(),"Shop")
         adapter.addFragment(StorageFragment(mStorageViewModel),"storage")
-=======
-        adapter.addFragment(ShopFragment(database, mainGameActionFragment),"Shop")
-        adapter.addFragment(storageFragment,"storage")
->>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")
+
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = adapter
         tabs = findViewById(R.id.tabs)
@@ -70,11 +66,7 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-<<<<<<< HEAD
        adapter.addFragment(MainGameActionFragment(mStorageViewModel))
-=======
-       adapter.addFragment(mainGameActionFragment)
->>>>>>> 820f35bcbbaab7c57f0cc76146e0bf3b412ceb37
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 
