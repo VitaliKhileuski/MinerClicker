@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
-import com.example.miner_clicker.data2.Storage
+import com.example.miner_clicker.data2.storage.Storage
 
 class StorageRecyclerAdapter() : RecyclerView.Adapter<StorageRecyclerAdapter.ViewHolder>() {
 
