@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.miner_clicker.data2.StorageViewModel
+import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 

@@ -1,11 +1,9 @@
-package com.example.miner_clicker.newData.d
+package com.example.miner_clicker.data2.player
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.miner_clicker.data2.player.Player
-import com.example.miner_clicker.data2.player.PlayerDAO
 
 @Database(entities = [Player::class], version = 1, exportSchema = false)
  abstract  class PlayerDatabase() : RoomDatabase() {

@@ -1,8 +1,8 @@
-package com.example.miner_clicker.data2
+package com.example.miner_clicker.data2.storage
 
 import androidx.lifecycle.LiveData
-import com.example.miner_clicker.data2.Storage
-import com.example.miner_clicker.data2.StorageDAO
+import com.example.miner_clicker.data2.storage.Storage
+import com.example.miner_clicker.data2.storage.StorageDAO
 
 
 class StorageRepository(private val storageDao : StorageDAO) {

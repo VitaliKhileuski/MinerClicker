@@ -1,4 +1,4 @@
-package com.example.miner_clicker.data2
+package com.example.miner_clicker.data2.storage
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

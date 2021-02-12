@@ -1,12 +1,12 @@
-package com.example.miner_clicker.data2
+package com.example.miner_clicker.data2.storage
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.miner_clicker.data2.Storage
-import com.example.miner_clicker.data2.StorageDatabase
-import com.example.miner_clicker.data2.StorageRepository
+import com.example.miner_clicker.data2.storage.Storage
+import com.example.miner_clicker.data2.storage.StorageDatabase
+import com.example.miner_clicker.data2.storage.StorageRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

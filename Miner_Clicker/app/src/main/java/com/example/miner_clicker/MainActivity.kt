@@ -5,12 +5,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
-import com.example.miner_clicker.data2.Storage
-import com.example.miner_clicker.data2.StorageViewModel
+import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
 import com.example.miner_clicker.models.*
-import com.example.miner_clicker.models.gameComponents.StorageItem
 import com.example.miner_clicker.viewModels.MainActivityViewModel
 import com.google.android.material.tabs.TabLayout
 

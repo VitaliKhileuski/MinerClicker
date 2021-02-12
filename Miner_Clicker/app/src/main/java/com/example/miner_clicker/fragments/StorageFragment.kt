@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miner_clicker.models.gameComponents.StorageItem
 import com.example.miner_clicker.adapters.StorageRecyclerAdapter
 import com.example.miner_clicker.databinding.FragmentStorageBinding
-import com.example.miner_clicker.data2.Storage
-import com.example.miner_clicker.data2.StorageViewModel
+import com.example.miner_clicker.data2.storage.StorageViewModel
 
 
 class StorageFragment(var mStorageViewModel: StorageViewModel) : Fragment() {

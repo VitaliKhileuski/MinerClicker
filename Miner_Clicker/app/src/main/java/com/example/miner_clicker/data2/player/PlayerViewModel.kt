@@ -1,10 +1,12 @@
-package com.example.miner_clicker.newData.d
+package com.example.miner_clicker.data2.player
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.miner_clicker.data2.player.Player
+import com.example.miner_clicker.data2.player.PlayerDatabase
+import com.example.miner_clicker.data2.player.PlayerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

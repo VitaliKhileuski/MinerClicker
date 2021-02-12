@@ -1,4 +1,4 @@
-package com.example.miner_clicker.newData.d
+package com.example.miner_clicker.data2.player
 
 import androidx.lifecycle.LiveData
 import com.example.miner_clicker.data2.player.Player

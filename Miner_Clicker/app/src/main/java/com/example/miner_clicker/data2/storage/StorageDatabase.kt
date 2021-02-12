@@ -1,4 +1,4 @@
-package com.example.miner_clicker.data2
+package com.example.miner_clicker.data2.storage
 
 import android.content.Context
 import androidx.room.Database
