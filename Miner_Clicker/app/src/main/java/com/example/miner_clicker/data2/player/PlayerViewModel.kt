@@ -26,4 +26,20 @@ class PlayerViewModel(application : Application) : AndroidViewModel(application)
             repository.addPlayer(player)
         }
     }
+    fun deleteAllData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllData()
+        }
+    }
+
+    fun deletePlayerById(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deletePlayerByIndex(id)
+        }
+    }
+    fun updatePlayer(player : Player) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updatePlayer(player)
+        }
+    }
 }

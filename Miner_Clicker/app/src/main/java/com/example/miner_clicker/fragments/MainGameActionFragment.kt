@@ -10,9 +10,7 @@ import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
-
-class MainGameActionFragment(var mStorageViewModel: StorageViewModel,
-                             var mPlayerViewModel: PlayerViewModel) : Fragment() {
+class MainGameActionFragment(var mStorageViewModel: StorageViewModel,var mPlayerViewModel: PlayerViewModel) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
     private val binding get() = _binding!!
 

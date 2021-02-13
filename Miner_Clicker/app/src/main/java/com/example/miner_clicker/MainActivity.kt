@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = MainActivityViewModel()
         mStorageViewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
         mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+
         SetUpTabs()
         Set()
 
