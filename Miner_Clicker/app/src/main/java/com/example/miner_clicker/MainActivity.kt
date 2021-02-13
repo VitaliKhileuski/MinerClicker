@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
 import com.example.miner_clicker.data2.player.Player
 import com.example.miner_clicker.data2.player.PlayerViewModel
+import com.example.miner_clicker.data2.storage.Storage
 import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = MainActivityViewModel()
         mStorageViewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
         mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
-        mPlayerViewModel.addPlayer(Player(1,0,0,1))
         SetUpTabs()
         Set()
 
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
    private fun Set(){
        val adapter=ViewPagerAdapter(supportFragmentManager)
-       adapter.addFragment(MainGameActionFragment(mStorageViewModel))
+       adapter.addFragment(MainGameActionFragment(mStorageViewModel, mPlayerViewModel))
        viewPager=findViewById(R.id.firstViewPager)
        viewPager.adapter=adapter
 

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.miner_clicker.data2.GameDatabase
 import com.example.miner_clicker.data2.storage.Storage
 import com.example.miner_clicker.data2.storage.StorageDatabase
 import com.example.miner_clicker.data2.storage.StorageRepository
@@ -15,7 +16,7 @@ class StorageViewModel(application: Application) : AndroidViewModel(application)
     public val repository: StorageRepository
 
     init {
-        val storageDao = StorageDatabase.getDatabase(application).storageDAO()
+        val storageDao = GameDatabase.getDatabase(application).storageDAO()
         repository = StorageRepository(storageDao)
         readAllData = repository.readAllData
     }

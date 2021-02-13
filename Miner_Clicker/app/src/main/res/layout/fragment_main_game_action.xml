@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
                     android:layout_marginLeft="47dp"
-                    android:text="0"
+                    android:text="@{viewModel.players[0].money}"
 
                     android:textColor="@color/black"
                     android:textSize="32sp"/>
