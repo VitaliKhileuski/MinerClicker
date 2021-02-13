@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "player_table")
 data class Player(
-@PrimaryKey(autoGenerate = true)
+        @PrimaryKey(autoGenerate = true)
 val id : Int,
-val money : Int,
-val gems : Int,
-val pickaxeId : Int
+        var money : Int,
+        val gems : Int,
+        val pickaxeId : Int
 
 )

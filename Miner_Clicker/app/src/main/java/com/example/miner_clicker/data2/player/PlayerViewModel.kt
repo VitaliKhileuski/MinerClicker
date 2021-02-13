@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PlayerViewModel(application : Application) : AndroidViewModel(application) {
-    private val readAllData: LiveData<List<Player>>
+    public val readAllData: LiveData<List<Player>>
     private val repository: PlayerRepository
 
     init {
@@ -23,6 +23,22 @@ class PlayerViewModel(application : Application) : AndroidViewModel(application)
     fun addPlayer(player: Player) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addPlayer(player)
+        }
+    }
+    fun deleteAllData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllData()
+        }
+    }
+
+    fun deletePlayerById(id: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deletePlayerByIndex(id)
+        }
+    }
+    fun updatePlayer(player : Player) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updatePlayer(player)
         }
     }
 }

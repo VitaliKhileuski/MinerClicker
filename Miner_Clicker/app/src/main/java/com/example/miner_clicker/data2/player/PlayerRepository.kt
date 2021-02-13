@@ -11,6 +11,14 @@ class PlayerRepository(private val playerDao : PlayerDAO) {
     suspend fun addPlayer(player : Player){
         playerDao.AddPlayer(player)
     }
-
+    suspend fun deleteAllData(){
+        playerDao.deleteAllData()
+    }
+    suspend fun deletePlayerByIndex(id : Int){
+        playerDao.deletePlayerById(id)
+    }
+    suspend fun updatePlayer(player : Player){
+        playerDao.updatePlayer(player)
+    }
 
 }

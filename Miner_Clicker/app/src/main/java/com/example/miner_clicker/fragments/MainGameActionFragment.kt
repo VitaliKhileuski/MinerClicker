@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.miner_clicker.data2.player.PlayerViewModel
 import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 
 
-class MainGameActionFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
+class MainGameActionFragment(var mStorageViewModel: StorageViewModel,var mPlayerViewModel: PlayerViewModel) : Fragment() {
     private var _binding:FragmentMainGameActionBinding?=null
     private val binding get() = _binding!!
 
@@ -27,7 +28,7 @@ class MainGameActionFragment(var mStorageViewModel: StorageViewModel) : Fragment
 
         _binding = FragmentMainGameActionBinding.inflate(inflater, container, false)
         binding.lifecycleOwner=this
-        binding.viewModel= MainGameActionFragmentVM(mStorageViewModel)
+        binding.viewModel= MainGameActionFragmentVM(mStorageViewModel,mPlayerViewModel)
 
         return binding.root
     }

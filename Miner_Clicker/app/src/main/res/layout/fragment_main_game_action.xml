@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="settings"
-                   >
+                    android:onClick="@{() -> viewModel.click()}">
 
                 </Button>
             </RelativeLayout>
