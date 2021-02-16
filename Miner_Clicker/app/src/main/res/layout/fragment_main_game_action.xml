@@ -2,10 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-    <variable
-        name="viewModel"
-        type="com.example.miner_clicker.viewModels.MainGameActionFragmentVM" />
+        <variable
+            name="viewModel"
+            type="com.example.miner_clicker.viewModels.MainGameActionFragmentVM" />
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,38 +31,37 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_coin"
+                    android:layout_alignParentStart="true"
+                    android:src="@mipmap/ic_coin" />
 
-                    android:layout_alignParentStart="true" />
                 <TextView
                     android:id="@+id/money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="47dp"
                     android:layout_marginTop="9dp"
-                    android:layout_marginLeft="47dp"
-                    android:text="@{Integer.toString(viewModel.money)}"
-
                     android:textColor="@color/black"
-                    android:textSize="32sp"/>
+                    android:textSize="32sp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_gem"
                     android:layout_below="@id/money"
+                    android:layout_alignParentStart="true"
                     android:layout_marginTop="5dp"
-                    android:layout_alignParentStart="true">
+                    android:src="@mipmap/ic_gem">
 
                 </androidx.appcompat.widget.AppCompatImageView>
+
                 <TextView
+                    android:id="@+id/gems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/money"
-                    android:text="0"
+                    android:layout_marginStart="50dp"
                     android:layout_marginTop="14dp"
-                    android:layout_marginLeft="50dp"
+                    android:text="0"
                     android:textColor="@color/black"
-
                     android:textSize="32sp" />
 
             </RelativeLayout>
@@ -77,8 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="settings"
-                    android:onClick="@{() -> viewModel.click()}">
+                    android:onClick="@{() -> viewModel.click()}"
+                    android:text="settings">
 
                 </Button>
             </RelativeLayout>
@@ -86,8 +86,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_row="1"
-                android:layout_column="0"
-                >
+                android:layout_column="0">
 
                 <ProgressBar
                     android:id="@+id/progress_bar"
@@ -96,10 +95,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="30dp"
-                    android:max="10"
-                    android:progress="0"
                     android:background="@color/black"
-                    android:minWidth="220dp"/>
+                    android:max="10"
+                    android:minWidth="220dp"
+                    android:progress="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -108,9 +107,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
                     android:text="0/10"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textStyle="bold">
 
 
                 </TextView>
@@ -124,13 +123,12 @@
                 android:layout_column="0"
                 android:layout_columnSpan="1">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_miner"
-                        android:layout_marginTop="100dp"
-                        android:layout_centerHorizontal="true"
-                        ></ImageView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="100dp"
+                    android:src="@mipmap/ic_miner"/>
             </RelativeLayout>
         </GridLayout>
 

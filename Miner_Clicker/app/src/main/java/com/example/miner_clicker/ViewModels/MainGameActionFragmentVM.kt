@@ -19,7 +19,7 @@ class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
     public val Money: LiveData<Int> = money
 
     init {
-    money.value= mStorageViewModel.readAllData.
+     money.value= 1000
     }
 
 

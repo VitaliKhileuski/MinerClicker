@@ -14,12 +14,8 @@ import com.example.miner_clicker.data2.storage.StorageViewModel
 
 
 class StorageFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
-    private var _binding:FragmentStorageBinding?=null
+    private var _binding: FragmentStorageBinding? = null
     private val binding get() = _binding!!
-    private var resources = mutableListOf<StorageItem>()
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,38 +23,27 @@ class StorageFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
 
         _binding = FragmentStorageBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
 
-
-
-        binding.lifecycleOwner=this
-
-
-
-        //binding.viewModel= StorageFragmentVM(database)
+        //binding.viewModel = StorageFragmentVM(database)
         val adapter = StorageRecyclerAdapter()
         binding.storageRecyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.storageRecyclerView.adapter = adapter
-        mStorageViewModel.readAllData.observe(viewLifecycleOwner, Observer { storage ->
-           adapter.SetData(storage)
+        mStorageViewModel.allStorageItems.observe(viewLifecycleOwner, Observer { storageItems ->
+            storageItems?.let { adapter.setData(it) }
         })
-
 
         return binding.root
     }
 
-    private fun addToList(resource: StorageItem){
-        resources.add(resource)
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
-
 }

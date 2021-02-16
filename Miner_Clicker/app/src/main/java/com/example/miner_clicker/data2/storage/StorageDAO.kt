@@ -8,10 +8,10 @@ import com.example.miner_clicker.data2.storage.Storage
 interface StorageDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend  fun AddStorage(storage : Storage)
+    suspend fun addStorage(storage : Storage)
 
     @Query("SELECT * FROM storage_table ORDER BY id ASC")
-    fun ReadAllData() : LiveData<List<Storage>>
+    fun readAllData() : LiveData<List<Storage>>
 
     @Delete
     fun deleteStorageItem(vararg storageItems : Storage)

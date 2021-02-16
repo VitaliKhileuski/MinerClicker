@@ -7,10 +7,10 @@ import com.example.miner_clicker.data2.storage.StorageDAO
 
 class StorageRepository(private val storageDao : StorageDAO) {
 
-    val readAllData : LiveData<List<Storage>> = storageDao.ReadAllData()
+    val allStorageItems : LiveData<List<Storage>> = storageDao.readAllData()
 
     suspend fun addStorage(storage : Storage){
-        storageDao.AddStorage(storage)
+        storageDao.addStorage(storage)
     }
     suspend fun deleteAllData(){
         storageDao.deleteAllData()

@@ -5,37 +5,29 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.miner_clicker.data2.GameDatabase
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.data2.storage.StorageDatabase
-import com.example.miner_clicker.data2.storage.StorageRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StorageViewModel(application: Application) : AndroidViewModel(application) {
-    public val readAllData: LiveData<List<Storage>>
-    public val repository: StorageRepository
+
+    val allStorageItems: LiveData<List<Storage>>
+    private val repository: StorageRepository
 
     init {
         val storageDao = GameDatabase.getDatabase(application).storageDAO()
         repository = StorageRepository(storageDao)
-        readAllData = repository.readAllData
+        allStorageItems = repository.allStorageItems
     }
 
-    fun addStorage(storage: Storage) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addStorage(storage)
-        }
+    fun addStorage(storage: Storage) = viewModelScope.launch(Dispatchers.IO) {
+        repository.addStorage(storage)
     }
 
-    fun deleteAllData() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAllData()
-        }
+    fun deleteAllData() = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteAllData()
     }
 
-    fun deleteById(id: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteStorageItemByIndex(id)
-        }
+    fun deleteById(id: Int) = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteStorageItemByIndex(id)
     }
 }
