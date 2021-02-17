@@ -9,19 +9,27 @@ import com.example.miner_clicker.data2.storage.Storage
 @Dao
 interface PlayerDAO {
 
-@Insert(onConflict = OnConflictStrategy.IGNORE)
-suspend  fun AddPlayer(player : Player)
-@Query("SELECT * FROM player_table ORDER BY id ASC")
-fun ReadAllData() : LiveData<List<Player>>
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun AddPlayer(player: Player)
+
+    @Query("SELECT * FROM player_table ORDER BY id ASC")
+    fun ReadAllData(): LiveData<List<Player>>
 
     @Update
-    suspend fun updatePlayer(player : Player)
+    suspend fun updatePlayer(player: Player)
+
     @Delete
-    fun deletePlayer(vararg players : Player)
+    fun deletePlayer(vararg players: Player)
 
     @Query("DELETE FROM player_table WHERE id=:id")
     fun deletePlayerById(id: Int)
 
     @Query("DELETE FROM player_table")
     suspend fun deleteAllData()
+
+
+    @Query("UPDATE player_table SET money=:money WHERE id=:id" )
+    suspend fun updateMoney(id : Int, money: Int)
+
+
 }

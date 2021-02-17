@@ -15,16 +15,19 @@ import kotlin.math.absoluteValue
 class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
                                private var mPlayerViewModel: PlayerViewModel):ViewModel() {
     lateinit var players: LiveData<List<Player>>
-    private var money = MutableLiveData<Int>()
-    public val Money: LiveData<Int> = money
+    private var money : Int = 0
+
 
     init {
-     money.value= 1000
+
     }
 
 
     fun click() {
-        // player.money+=1
-        //mPlayerViewModel.updatePlayer(player)
+        money++
+        mPlayerViewModel.updateMoney(1,money)
+    }
+    fun setMoney(money : Int){
+        this.money=money
     }
 }

@@ -20,5 +20,8 @@ class PlayerRepository(private val playerDao : PlayerDAO) {
     suspend fun updatePlayer(player : Player){
         playerDao.updatePlayer(player)
     }
+    suspend fun updateMoney(id: Int,money : Int){
+        playerDao.updateMoney(id,money)
+    }
 
 }

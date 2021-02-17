@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
+import com.example.miner_clicker.data2.ore.Ore
+import com.example.miner_clicker.data2.ore.OreViewModel
 import com.example.miner_clicker.data2.player.Player
 import com.example.miner_clicker.data2.player.PlayerViewModel
 import com.example.miner_clicker.data2.storage.Storage
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tabs: TabLayout
     private lateinit var mStorageViewModel: StorageViewModel
     private lateinit var mPlayerViewModel: PlayerViewModel
+    private lateinit var mOreViewModel: OreViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = MainActivityViewModel()
         mStorageViewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
         mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
+        mOreViewModel = ViewModelProvider(this).get(OreViewModel::class.java)
 
         SetUpTabs()
         Set()

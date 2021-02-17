@@ -34,6 +34,7 @@ class MainGameActionFragment(var mStorageViewModel: StorageViewModel, var mPlaye
             players?.let {
                 binding.money.text = ConvertBigNumbers.ToString(players[0].money)
                 binding.gems.text = players[0].gems.toString()
+                (binding.viewModel as MainGameActionFragmentVM).setMoney(players[0].money)
             }
         })
 

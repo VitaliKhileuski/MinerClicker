@@ -46,4 +46,9 @@ class PlayerViewModel(application : Application) : AndroidViewModel(application)
             repository.updatePlayer(player)
         }
     }
+    fun updateMoney(id: Int, money : Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateMoney(id,money)
+        }
+    }
 }
