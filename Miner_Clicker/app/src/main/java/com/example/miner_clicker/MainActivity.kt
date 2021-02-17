@@ -10,6 +10,8 @@ import com.example.miner_clicker.data2.ore.Ore
 import com.example.miner_clicker.data2.ore.OreViewModel
 import com.example.miner_clicker.data2.player.Player
 import com.example.miner_clicker.data2.player.PlayerViewModel
+import com.example.miner_clicker.data2.shopItem.ShopItem
+import com.example.miner_clicker.data2.shopItem.ShopItemViewModel
 import com.example.miner_clicker.data2.storage.Storage
 import com.example.miner_clicker.data2.storage.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager
     lateinit var tabs: TabLayout
     private lateinit var mStorageViewModel: StorageViewModel
+    private lateinit var mShopItemViewModel: ShopItemViewModel
     private lateinit var mPlayerViewModel: PlayerViewModel
     private lateinit var mOreViewModel: OreViewModel
 
@@ -34,8 +37,16 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = MainActivityViewModel()
         mStorageViewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
+        mShopItemViewModel = ViewModelProvider(this).get(ShopItemViewModel::class.java)
         mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
         mOreViewModel = ViewModelProvider(this).get(OreViewModel::class.java)
+        //mShopItemViewModel.addShopItem(ShopItem(1, "stone pickaxe", "this pickaxe is made from stone", 5))
+        //mPlayerViewModel.addPlayer(Player(1,10000,10,1))
+        //mStorageViewModel.addStorage(Storage(1,"stone",0,500))
+        //mStorageViewModel.addStorage(Storage(2,"iron",0,250))
+        //mStorageViewModel.addStorage(Storage(3,"gold",0,125))
+        //mStorageViewModel.addStorage(Storage(4,"diamond",0,10))
+        //mOreViewModel.addOre(Ore(1,10,10,10,1))
 
         SetUpTabs()
         Set()
