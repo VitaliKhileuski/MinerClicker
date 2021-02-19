@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         mShopItemViewModel = ViewModelProvider(this).get(ShopItemViewModel::class.java)
         mPlayerViewModel = ViewModelProvider(this).get(PlayerViewModel::class.java)
         mOreViewModel = ViewModelProvider(this).get(OreViewModel::class.java)
-        //mShopItemViewModel.addShopItem(ShopItem(1, "stone pickaxe", "this pickaxe is made from stone", 5))
+        //mShopItemViewModel.addShopItem(ShopItem(1, "stone pickaxe", "this pickaxe is made from stone", 5, 10))
         //mPlayerViewModel.addPlayer(Player(1,10000,10,1))
         //mStorageViewModel.addStorage(Storage(1,"stone",0,200))
         //mStorageViewModel.addStorage(Storage(2,"iron",0,50))
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     private fun SetUpTabs() {
         //Adding tabs in adapter for ViewPager
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ShopFragment(), "Shop")
+        adapter.addFragment(ShopFragment(mShopItemViewModel), "Shop")
         adapter.addFragment(StorageFragment(mStorageViewModel), "storage")
         adapter.addFragment(DrillFragment(), "Drill")
         adapter.addFragment(ExchangeFragment(), "Exchange")

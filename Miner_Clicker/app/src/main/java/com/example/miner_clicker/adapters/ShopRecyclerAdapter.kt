@@ -10,10 +10,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
+import com.example.miner_clicker.data2.shopItem.ShopItem
+import com.example.miner_clicker.data2.storage.Storage
 import com.example.miner_clicker.models.gameComponents.Player
 
-class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
+class ShopRecyclerAdapter() : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
+    private var shopItems : List<ShopItem> = emptyList()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.product_name)
@@ -24,18 +27,7 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
 
         init {
             productBuyButton.setOnClickListener { v: View ->
-                //player=database.ReadPlayerData()
 
-                val position: Int = adapterPosition
-                var pickaxe: Pickaxe = shopItems[position]
-
-                if (player.money >= pickaxe.price) {
-                    //  database.DeleteAllRows("Pickaxe")
-                    //database.InsertPickaxeData(pickaxe)
-                    //database.UpdateMoney(player.money-pickaxe.price)
-
-
-                }
             }
         }
     }
@@ -47,9 +39,9 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.productName.text = shopItems[position].name
-        holder.productDescription.text = shopItems[position].descriprion
-        holder.productImage.setImageResource(shopItems[position].imageSource)
-        holder.productBuyButton.text = shopItems[position].price.toString()
+        holder.productDescription.text = shopItems[position].description
+        //holder.productImage.setImageResource(shopItems[position].imageSource)
+        //holder.productBuyButton.text = shopItems[position]
 
     }
 
@@ -57,5 +49,8 @@ class ShopRecyclerAdapter(private var shopItems: MutableList<Pickaxe>) : Recycle
         return shopItems.count()
     }
 
-
+    public fun setData(shopItems: List<ShopItem>) {
+        this.shopItems = shopItems
+        notifyDataSetChanged()
+    }
 }

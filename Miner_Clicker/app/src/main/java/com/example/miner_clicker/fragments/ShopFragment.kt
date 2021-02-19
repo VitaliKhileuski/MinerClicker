@@ -5,14 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.adapters.ShopRecyclerAdapter
+import com.example.miner_clicker.data2.shopItem.ShopItemViewModel
 import com.example.miner_clicker.databinding.FragmentShopBinding
 import com.example.miner_clicker.viewModels.ShopFragmentVM
 
 
-class ShopFragment() : Fragment() {
+class ShopFragment(val mShopItemViewModel: ShopItemViewModel) : Fragment() {
 
     private var _binding:FragmentShopBinding?=null
     private val binding get() = _binding!!
@@ -28,13 +30,15 @@ class ShopFragment() : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentShopBinding.inflate(inflater, container, false)
-
         binding.lifecycleOwner=this
-        //binding.viewModel= ShopFragmentVM(database)
+
+        val adapter = ShopRecyclerAdapter()
+        binding.viewModel= ShopFragmentVM()
         binding.shopRecyclerView.layoutManager=LinearLayoutManager(this.context)
-
-
-       // binding.shopRecyclerView.adapter=ShopRecyclerAdapter(database.ReadShopData(), database, mainGameActionFragment)
+        binding.shopRecyclerView.adapter = adapter
+        mShopItemViewModel.allShopItems.observe(viewLifecycleOwner, Observer { shopItems ->
+            shopItems?.let { adapter.setData(it) }
+        })
 
         return binding.root
     }
