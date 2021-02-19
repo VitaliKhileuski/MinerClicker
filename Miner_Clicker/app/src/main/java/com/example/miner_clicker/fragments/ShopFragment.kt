@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.adapters.ShopRecyclerAdapter
-import com.example.miner_clicker.data2.shopItem.ShopItemViewModel
+import com.example.miner_clicker.databases.shopItem.ShopItemViewModel
 import com.example.miner_clicker.databinding.FragmentShopBinding
 import com.example.miner_clicker.viewModels.ShopFragmentVM
 

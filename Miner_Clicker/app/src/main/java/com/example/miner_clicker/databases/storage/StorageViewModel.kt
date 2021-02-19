@@ -20,7 +20,7 @@ class StorageViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun addStorageItem(storageItem: StorageItem) = viewModelScope.launch(Dispatchers.IO) {
-        repository.addStorage(storageItem)
+        repository.addStorageItem(storageItem)
     }
 
     fun deleteAllData() = viewModelScope.launch(Dispatchers.IO) {

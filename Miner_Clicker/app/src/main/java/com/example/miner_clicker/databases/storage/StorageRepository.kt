@@ -7,7 +7,7 @@ class StorageRepository(private val storageDao : StorageDAO) {
 
     val allStorageItems : LiveData<List<StorageItem>> = storageDao.readAllData()
 
-    suspend fun addStorage(storageItem : StorageItem){
+    suspend fun addStorageItem(storageItem : StorageItem){
         storageDao.addStorageItem(storageItem)
     }
     suspend fun deleteAllData(){

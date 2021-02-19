@@ -10,9 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.models.Pickaxe
 import com.example.miner_clicker.R
-import com.example.miner_clicker.data2.shopItem.ShopItem
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.models.gameComponents.Player
+import com.example.miner_clicker.databases.shopItem.ShopItem
 
 class ShopRecyclerAdapter() : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolder>() {
 
@@ -23,7 +21,6 @@ class ShopRecyclerAdapter() : RecyclerView.Adapter<ShopRecyclerAdapter.ViewHolde
         val productDescription: TextView = itemView.findViewById(R.id.product_description)
         val productImage: ImageView = itemView.findViewById(R.id.product_image)
         val productBuyButton: Button = itemView.findViewById(R.id.product_buying_button)
-        var player: Player = Player()
 
         init {
             productBuyButton.setOnClickListener { v: View ->
