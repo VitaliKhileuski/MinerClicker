@@ -1,10 +1,10 @@
-package com.example.miner_clicker.data2.storage
+package com.example.miner_clicker.databases.storage
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "storage_table")
-data class Storage(
+data class StorageItem(
         @PrimaryKey(autoGenerate = true)
         val id : Int,
         val mineral : String,

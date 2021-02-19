@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.miner_clicker.adapters.ConvertBigNumbers
-import com.example.miner_clicker.data2.ore.OreViewModel
-import com.example.miner_clicker.data2.player.PlayerViewModel
-import com.example.miner_clicker.data2.storage.StorageViewModel
+import com.example.miner_clicker.databases.ore.OreViewModel
+import com.example.miner_clicker.databases.player.PlayerViewModel
+import com.example.miner_clicker.databases.storage.StorageViewModel
 import com.example.miner_clicker.databinding.FragmentMainGameActionBinding
 import com.example.miner_clicker.viewModels.MainGameActionFragmentVM
 

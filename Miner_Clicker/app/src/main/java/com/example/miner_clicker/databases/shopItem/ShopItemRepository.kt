@@ -1,4 +1,4 @@
-package com.example.miner_clicker.data2.shopItem
+package com.example.miner_clicker.databases.shopItem
 
 import androidx.lifecycle.LiveData
 

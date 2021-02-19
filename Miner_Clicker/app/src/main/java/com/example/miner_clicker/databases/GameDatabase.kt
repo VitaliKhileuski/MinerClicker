@@ -1,23 +1,20 @@
-package com.example.miner_clicker.data2
+package com.example.miner_clicker.databases
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.miner_clicker.data2.ore.Ore
-import com.example.miner_clicker.data2.ore.OreDAO
-import com.example.miner_clicker.data2.player.Player
-import com.example.miner_clicker.data2.player.PlayerDAO
-import com.example.miner_clicker.data2.shopItem.ShopItem
-import com.example.miner_clicker.data2.shopItem.ShopItemDAO
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.data2.storage.StorageDAO
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.miner_clicker.databases.ore.Ore
+import com.example.miner_clicker.databases.ore.OreDAO
+import com.example.miner_clicker.databases.player.Player
+import com.example.miner_clicker.databases.player.PlayerDAO
+import com.example.miner_clicker.databases.shopItem.ShopItem
+import com.example.miner_clicker.databases.shopItem.ShopItemDAO
+import com.example.miner_clicker.databases.storage.StorageItem
+import com.example.miner_clicker.databases.storage.StorageDAO
 
-@Database(entities = [Storage::class, ShopItem::class, Player::class, Ore::class], version = 1, exportSchema = false)
+@Database(entities = [StorageItem::class, ShopItem::class, Player::class, Ore::class], version = 1, exportSchema = false)
 abstract class GameDatabase() : RoomDatabase() {
 
     abstract fun storageDAO(): StorageDAO

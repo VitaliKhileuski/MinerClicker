@@ -6,17 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.miner_clicker.adapters.ViewPagerAdapter
-import com.example.miner_clicker.data2.ore.Ore
-import com.example.miner_clicker.data2.ore.OreViewModel
-import com.example.miner_clicker.data2.player.Player
-import com.example.miner_clicker.data2.player.PlayerViewModel
-import com.example.miner_clicker.data2.shopItem.ShopItem
-import com.example.miner_clicker.data2.shopItem.ShopItemViewModel
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.data2.storage.StorageViewModel
+import com.example.miner_clicker.databases.ore.OreViewModel
+import com.example.miner_clicker.databases.player.PlayerViewModel
+import com.example.miner_clicker.databases.shopItem.ShopItemViewModel
+import com.example.miner_clicker.databases.storage.StorageViewModel
 import com.example.miner_clicker.databinding.ActivityMainBinding
 import com.example.miner_clicker.fragments.*
-import com.example.miner_clicker.models.*
 import com.example.miner_clicker.viewModels.MainActivityViewModel
 import com.google.android.material.tabs.TabLayout
 

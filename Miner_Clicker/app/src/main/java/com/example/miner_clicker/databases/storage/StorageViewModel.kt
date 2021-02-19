@@ -1,16 +1,16 @@
-package com.example.miner_clicker.data2.storage
+package com.example.miner_clicker.databases.storage
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.miner_clicker.data2.GameDatabase
+import com.example.miner_clicker.databases.GameDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class StorageViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allData: LiveData<List<Storage>>
+    val allData: LiveData<List<StorageItem>>
     private val repository: StorageRepository
 
     init {
@@ -19,8 +19,8 @@ class StorageViewModel(application: Application) : AndroidViewModel(application)
         allData = repository.allStorageItems
     }
 
-    fun addStorage(storage: Storage) = viewModelScope.launch(Dispatchers.IO) {
-        repository.addStorage(storage)
+    fun addStorageItem(storageItem: StorageItem) = viewModelScope.launch(Dispatchers.IO) {
+        repository.addStorage(storageItem)
     }
 
     fun deleteAllData() = viewModelScope.launch(Dispatchers.IO) {
@@ -30,7 +30,7 @@ class StorageViewModel(application: Application) : AndroidViewModel(application)
     fun deleteById(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteStorageItemByIndex(id)
     }
-    fun updateAllData(storageItems : List<Storage>) = viewModelScope.launch(Dispatchers.IO){
+    fun updateAllData(storageItems : List<StorageItem>) = viewModelScope.launch(Dispatchers.IO){
 
         repository.updateAllData(storageItems)
     }

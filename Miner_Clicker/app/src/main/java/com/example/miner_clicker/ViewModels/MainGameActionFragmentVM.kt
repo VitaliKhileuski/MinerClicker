@@ -1,25 +1,20 @@
 package com.example.miner_clicker.viewModels
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.example.miner_clicker.data2.ore.Ore
-import com.example.miner_clicker.data2.ore.OreViewModel
-import com.example.miner_clicker.data2.player.Player
-import com.example.miner_clicker.data2.player.PlayerViewModel
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.data2.storage.StorageViewModel
+import com.example.miner_clicker.databases.ore.Ore
+import com.example.miner_clicker.databases.ore.OreViewModel
+import com.example.miner_clicker.databases.player.PlayerViewModel
+import com.example.miner_clicker.databases.storage.StorageItem
+import com.example.miner_clicker.databases.storage.StorageViewModel
 import com.example.miner_clicker.models.gameComponents.RandomMinerals
-import kotlin.math.absoluteValue
 
 
 class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
                                private var mPlayerViewModel: PlayerViewModel,
                                private var mOreViewModel: OreViewModel):ViewModel() {
     private lateinit var ore : Ore
-    private lateinit var storage : List<Storage>
+    private lateinit var storage : List<StorageItem>
 
     init {
 
@@ -41,7 +36,7 @@ class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
     fun setOre(ore : Ore){
         this.ore = ore
     }
-    fun setStorage(storage : List<Storage>){
+    fun setStorage(storage : List<StorageItem>){
         this.storage = storage
     }
     private fun setOreNewLevel(){

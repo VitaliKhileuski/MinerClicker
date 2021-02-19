@@ -1,4 +1,4 @@
-package com.example.miner_clicker.data2.player
+package com.example.miner_clicker.databases.player
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "player_table")
 data class Player(
         @PrimaryKey(autoGenerate = true)
-val id : Int,
+        val id : Int,
         var money : Int,
         val gems : Int,
         val pickaxeId : Int

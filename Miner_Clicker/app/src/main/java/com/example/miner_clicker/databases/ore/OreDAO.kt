@@ -1,9 +1,7 @@
-package com.example.miner_clicker.data2.ore
+package com.example.miner_clicker.databases.ore
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.miner_clicker.data2.player.Player
-import com.example.miner_clicker.data2.storage.Storage
 
 
 @Dao

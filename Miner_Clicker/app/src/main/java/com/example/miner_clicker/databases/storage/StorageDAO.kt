@@ -1,20 +1,19 @@
-package com.example.miner_clicker.data2.storage
+package com.example.miner_clicker.databases.storage
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.miner_clicker.data2.storage.Storage
 
 @Dao
 interface StorageDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addStorage(storage : Storage)
+    suspend fun addStorageItem(storageItem : StorageItem)
 
     @Query("SELECT * FROM storage_table ORDER BY id ASC")
-    fun readAllData() : LiveData<List<Storage>>
+    fun readAllData() : LiveData<List<StorageItem>>
 
     @Delete
-    fun deleteStorageItem(vararg storageItems : Storage)
+    fun deleteStorageItem(vararg storageItems : StorageItem)
 
     @Query("DELETE FROM storage_table WHERE id=:id")
     fun deleteStorageItem(id: Int)
@@ -22,7 +21,7 @@ interface StorageDAO {
     @Query("DELETE FROM storage_table")
     suspend fun deleteAllData()
     @Update
-    suspend fun updateAllData(storageItems : List<Storage>)
+    suspend fun updateAllData(storageItems : List<StorageItem>)
 
 
 }

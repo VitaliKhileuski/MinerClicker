@@ -3,15 +3,14 @@ package com.example.miner_clicker.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.miner_clicker.R
-import com.example.miner_clicker.data2.storage.Storage
+import com.example.miner_clicker.databases.storage.StorageItem
 
 class StorageRecyclerAdapter() : RecyclerView.Adapter<StorageRecyclerAdapter.ViewHolder>() {
 
-    private var storageItems: List<Storage> = emptyList<Storage>()
+    private var storageItems: List<StorageItem> = emptyList<StorageItem>()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val resourceName: TextView = itemView.findViewById(R.id.resource_name)
@@ -36,7 +35,7 @@ class StorageRecyclerAdapter() : RecyclerView.Adapter<StorageRecyclerAdapter.Vie
         return storageItems.count()
     }
 
-    public fun setData(storage: List<Storage>) {
+    public fun setData(storage: List<StorageItem>) {
         this.storageItems = storage
         notifyDataSetChanged()
     }

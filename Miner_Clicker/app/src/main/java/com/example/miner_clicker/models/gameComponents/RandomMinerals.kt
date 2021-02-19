@@ -1,20 +1,16 @@
 package com.example.miner_clicker.models.gameComponents
 
 
-import com.example.miner_clicker.data2.storage.Storage
-import com.example.miner_clicker.models.Diamond
-import com.example.miner_clicker.models.Gold
-import com.example.miner_clicker.models.Iron
-import com.example.miner_clicker.models.Stone
+import com.example.miner_clicker.databases.storage.StorageItem
 
-    class RandomMinerals() {
+class RandomMinerals() {
 
 
         companion object {
             private val chancesForMinerals: MutableList<Int> = mutableListOf(70, 20, 8, 2)
             private var randNumber: Int = 0
 
-            fun getStorageItems(storage : List<Storage>, capacity: Int) {
+            fun getStorageItems(storage : List<StorageItem>, capacity: Int) {
                 val minerals: MutableList<Int> = RandMineral(capacity)
                 for (i in 0..3) {
                     if(storage[i].numberOfMineral+minerals[i]>storage[i].Capacity){

@@ -1,11 +1,10 @@
-package com.example.miner_clicker.data2.ore
+package com.example.miner_clicker.databases.ore
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.miner_clicker.data2.GameDatabase
+import com.example.miner_clicker.databases.GameDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

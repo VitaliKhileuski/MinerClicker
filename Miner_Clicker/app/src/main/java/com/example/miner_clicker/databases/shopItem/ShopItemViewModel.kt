@@ -1,10 +1,10 @@
-package com.example.miner_clicker.data2.shopItem
+package com.example.miner_clicker.databases.shopItem
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.miner_clicker.data2.GameDatabase
+import com.example.miner_clicker.databases.GameDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
