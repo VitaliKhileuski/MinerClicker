@@ -21,6 +21,8 @@ interface StorageDAO {
 
     @Query("DELETE FROM storage_table")
     suspend fun deleteAllData()
+    @Update
+    suspend fun updateAllData(storageItems : List<Storage>)
 
 
 }

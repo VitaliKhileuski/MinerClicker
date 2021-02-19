@@ -1,6 +1,7 @@
 package com.example.miner_clicker.models.gameComponents
 
 
+import com.example.miner_clicker.data2.storage.Storage
 import com.example.miner_clicker.models.Diamond
 import com.example.miner_clicker.models.Gold
 import com.example.miner_clicker.models.Iron
@@ -13,14 +14,14 @@ import com.example.miner_clicker.models.Stone
             private val chancesForMinerals: MutableList<Int> = mutableListOf(70, 20, 8, 2)
             private var randNumber: Int = 0
 
-            fun getStorageItems(storage: Storage, capacity: Int) {
+            fun getStorageItems(storage : List<Storage>, capacity: Int) {
                 val minerals: MutableList<Int> = RandMineral(capacity)
                 for (i in 0..3) {
-                    if(storage.storageItems[i].numberOfMineral+minerals[i]>storage.storageItems[i].capacity){
-                        storage.storageItems[i].numberOfMineral=storage.storageItems[i].capacity
+                    if(storage[i].numberOfMineral+minerals[i]>storage[i].Capacity){
+                        storage[i].numberOfMineral = storage[i].Capacity
                     }
                     else {
-                        storage.storageItems[i].numberOfMineral += minerals[i]
+                        storage[i].numberOfMineral += minerals[i]
                     }
                 }
 

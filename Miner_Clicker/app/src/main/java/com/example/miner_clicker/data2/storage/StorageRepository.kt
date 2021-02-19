@@ -18,6 +18,10 @@ class StorageRepository(private val storageDao : StorageDAO) {
     suspend fun deleteStorageItemByIndex(id : Int){
         storageDao.deleteStorageItem(id)
     }
+    suspend fun updateAllData(storageItems : List<Storage>){
+        storageDao.updateAllData(storageItems)
+    }
+
 
 
 }

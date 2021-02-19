@@ -8,7 +8,7 @@ data class Storage(
         @PrimaryKey(autoGenerate = true)
         val id : Int,
         val mineral : String,
-        val numberOfMineral : Int,
+        var numberOfMineral : Int,
         val Capacity : Int
 
 )

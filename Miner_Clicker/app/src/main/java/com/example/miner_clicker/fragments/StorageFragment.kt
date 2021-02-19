@@ -35,7 +35,7 @@ class StorageFragment(var mStorageViewModel: StorageViewModel) : Fragment() {
         val adapter = StorageRecyclerAdapter()
         binding.storageRecyclerView.layoutManager = LinearLayoutManager(this.context)
         binding.storageRecyclerView.adapter = adapter
-        mStorageViewModel.allStorageItems.observe(viewLifecycleOwner, Observer { storageItems ->
+        mStorageViewModel.allData.observe(viewLifecycleOwner, Observer { storageItems ->
             storageItems?.let { adapter.setData(it) }
         })
 

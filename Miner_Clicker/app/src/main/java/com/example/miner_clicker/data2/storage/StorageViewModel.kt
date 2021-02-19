@@ -10,13 +10,13 @@ import kotlinx.coroutines.launch
 
 class StorageViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allStorageItems: LiveData<List<Storage>>
+    val allData: LiveData<List<Storage>>
     private val repository: StorageRepository
 
     init {
         val storageDao = GameDatabase.getDatabase(application).storageDAO()
         repository = StorageRepository(storageDao)
-        allStorageItems = repository.allStorageItems
+        allData = repository.allStorageItems
     }
 
     fun addStorage(storage: Storage) = viewModelScope.launch(Dispatchers.IO) {
@@ -29,5 +29,9 @@ class StorageViewModel(application: Application) : AndroidViewModel(application)
 
     fun deleteById(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteStorageItemByIndex(id)
+    }
+    fun updateAllData(storageItems : List<Storage>) = viewModelScope.launch(Dispatchers.IO){
+
+        repository.updateAllData(storageItems)
     }
 }

@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/background2"
+        android:background="@drawable/background"
         tools:context=".fragments.MainGameActionFragment">
 
         <GridLayout
@@ -122,13 +122,6 @@
                 android:layout_column="0"
                 android:layout_columnSpan="1"
                 android:onClick="@{() -> viewModel.click()}">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="100dp"
-                    android:src="@mipmap/ic_miner"/>
             </RelativeLayout>
         </GridLayout>
 

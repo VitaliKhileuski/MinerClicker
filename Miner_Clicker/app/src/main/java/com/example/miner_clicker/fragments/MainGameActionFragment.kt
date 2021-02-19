@@ -47,6 +47,11 @@ class MainGameActionFragment(var mStorageViewModel: StorageViewModel, var mPlaye
                 (binding.viewModel as MainGameActionFragmentVM).setOre(ore[0])
             }
         })
+        mStorageViewModel.allData.observe(viewLifecycleOwner, Observer { storage ->
+            storage?.let {
+                (binding.viewModel as MainGameActionFragmentVM).setStorage(storage)
+            }
+        })
 
         return binding.root
     }
