@@ -20,6 +20,7 @@ class OreRepository(private val oreDao : OreDAO) {
         oreDao.deleteOreById(id)
     }
 
+
     suspend fun updateOre(ore : Ore){
         oreDao.updateOre(ore)
     }

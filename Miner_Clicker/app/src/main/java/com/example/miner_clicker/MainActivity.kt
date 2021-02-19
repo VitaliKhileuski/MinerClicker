@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun Set() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(MainGameActionFragment(mStorageViewModel, mPlayerViewModel))
+        adapter.addFragment(MainGameActionFragment(mStorageViewModel, mPlayerViewModel,mOreViewModel))
         viewPager = findViewById(R.id.firstViewPager)
         viewPager.adapter = adapter
     }

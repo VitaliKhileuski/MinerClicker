@@ -24,4 +24,5 @@ fun readAllData() : LiveData<List<Ore>>
 
     @Query("DELETE FROM ore_table")
     suspend fun deleteAllData()
+
 }

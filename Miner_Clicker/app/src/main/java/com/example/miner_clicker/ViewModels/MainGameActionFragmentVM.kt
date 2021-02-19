@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.example.miner_clicker.data2.ore.Ore
+import com.example.miner_clicker.data2.ore.OreViewModel
 import com.example.miner_clicker.data2.player.Player
 import com.example.miner_clicker.data2.player.PlayerViewModel
 import com.example.miner_clicker.data2.storage.Storage
@@ -13,9 +15,10 @@ import kotlin.math.absoluteValue
 
 
 class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
-                               private var mPlayerViewModel: PlayerViewModel):ViewModel() {
+                               private var mPlayerViewModel: PlayerViewModel,
+                               private var mOreViewModel: OreViewModel):ViewModel() {
     lateinit var players: LiveData<List<Player>>
-    private var money : Int = 0
+    private lateinit var ore : Ore
 
 
     init {
@@ -24,10 +27,23 @@ class MainGameActionFragmentVM(private var mStorageViewModel: StorageViewModel,
 
 
     fun click() {
-        money++
-        mPlayerViewModel.updateMoney(1,money)
+        ore.currentHealth--
+        if(ore.currentHealth<=0){
+            setOreNewLevel()
+        }
+        mOreViewModel.updateOre(ore)
+
+
     }
-    fun setMoney(money : Int){
-        this.money=money
+
+    fun setOre(ore : Ore){
+        this.ore = ore
+    }
+    fun setOreNewLevel(){
+        ore.maxHealth+=5
+        ore.currentHealth=ore.maxHealth
+        ore.level++
+        ore.capacity+=5
+
     }
 }

@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class Ore(
         @PrimaryKey(autoGenerate = true)
         val id: Int,
-        val maxHealth: Int,
-        val currentHealth: Int,
-        val capacity: Int,
-        val level: Int
+        var maxHealth: Int,
+        var currentHealth: Int,
+        var capacity: Int,
+        var level: Int
 )

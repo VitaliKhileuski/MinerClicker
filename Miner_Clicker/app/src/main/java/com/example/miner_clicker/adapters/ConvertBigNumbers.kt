@@ -12,14 +12,16 @@ class ConvertBigNumbers {
         private var afterDotNumber: String = ""
 
         fun ToString(number: Int): String {
-            letter = getLetter(number)
-            afterDotNumber = if (preDotNumber < 10) {
-                number.toString()[1] + number.toString()[2].toString()
-            } else {
-                number.toString()[2] + number.toString()[3].toString()
-            }
-            stringNumber = preDotNumber.toInt().toString() + "." + afterDotNumber + letter
-            return stringNumber
+             if(number>1000) {
+                letter = getLetter(number)
+                afterDotNumber = if (preDotNumber < 10) {
+                    number.toString()[1] + number.toString()[2].toString()
+                } else {
+                    number.toString()[2] + number.toString()[3].toString()
+                }
+                stringNumber = preDotNumber.toInt().toString() + "." + afterDotNumber + letter
+               return  stringNumber
+            } else return number.toString()
         }
 
         private fun getLetter(number: Int): String {
